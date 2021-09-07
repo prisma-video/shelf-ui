@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import GlobalContext from './context/GlobalContext';
 
 import MainView from './containers/MainView';
 import CatalogView from './containers/CatalogView';
@@ -19,11 +20,13 @@ function App() {
     <meta name="description" content={ meta.description } />
   </Helmet>
   <Router>
-    <Switch>
-      <Route path ="/movie" component={MovieView} />
-      <Route path ="/catalog" component={CatalogView} />
-      <Route exact path ="/" component={MainView} />
-    </Switch>
+    <GlobalContext>
+      <Switch>
+        <Route path ="/movie" component={MovieView} />
+        <Route path ="/catalog" component={CatalogView} />
+        <Route exact path ="/" component={MainView} />
+      </Switch>
+    </GlobalContext>
   </Router>
   </HelmetProvider>
   );
