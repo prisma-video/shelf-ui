@@ -8,12 +8,13 @@ export const createMovie = /* GraphQL */ `
   ) {
     createMovie(input: $input, condition: $condition) {
       id
-      name
-      original_name
+      title
+      original_title
       description
       trailer_url
       thumbnail_img
       pg_rating
+      tags
       production_date
       release_date
       revenue
@@ -41,12 +42,13 @@ export const updateMovie = /* GraphQL */ `
   ) {
     updateMovie(input: $input, condition: $condition) {
       id
-      name
-      original_name
+      title
+      original_title
       description
       trailer_url
       thumbnail_img
       pg_rating
+      tags
       production_date
       release_date
       revenue
@@ -74,12 +76,13 @@ export const deleteMovie = /* GraphQL */ `
   ) {
     deleteMovie(input: $input, condition: $condition) {
       id
-      name
-      original_name
+      title
+      original_title
       description
       trailer_url
       thumbnail_img
       pg_rating
+      tags
       production_date
       release_date
       revenue
@@ -110,12 +113,13 @@ export const createComment = /* GraphQL */ `
       movieID
       movie {
         id
-        name
-        original_name
+        title
+        original_title
         description
         trailer_url
         thumbnail_img
         pg_rating
+        tags
         production_date
         release_date
         revenue
@@ -147,12 +151,13 @@ export const updateComment = /* GraphQL */ `
       movieID
       movie {
         id
-        name
-        original_name
+        title
+        original_title
         description
         trailer_url
         thumbnail_img
         pg_rating
+        tags
         production_date
         release_date
         revenue
@@ -184,12 +189,13 @@ export const deleteComment = /* GraphQL */ `
       movieID
       movie {
         id
-        name
-        original_name
+        title
+        original_title
         description
         trailer_url
         thumbnail_img
         pg_rating
+        tags
         production_date
         release_date
         revenue

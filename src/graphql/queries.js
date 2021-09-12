@@ -5,12 +5,13 @@ export const getMovie = /* GraphQL */ `
   query GetMovie($id: ID!) {
     getMovie(id: $id) {
       id
-      name
-      original_name
+      title
+      original_title
       description
       trailer_url
       thumbnail_img
       pg_rating
+      tags
       production_date
       release_date
       revenue
@@ -40,12 +41,13 @@ export const listMovies = /* GraphQL */ `
     listMovies(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        name
-        original_name
+        title
+        original_title
         description
         trailer_url
         thumbnail_img
         pg_rating
+        tags
         production_date
         release_date
         revenue
@@ -72,12 +74,13 @@ export const getComment = /* GraphQL */ `
       movieID
       movie {
         id
-        name
-        original_name
+        title
+        original_title
         description
         trailer_url
         thumbnail_img
         pg_rating
+        tags
         production_date
         release_date
         revenue

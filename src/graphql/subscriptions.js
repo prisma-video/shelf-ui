@@ -5,12 +5,13 @@ export const onCreateMovie = /* GraphQL */ `
   subscription OnCreateMovie {
     onCreateMovie {
       id
-      name
-      original_name
+      title
+      original_title
       description
       trailer_url
       thumbnail_img
       pg_rating
+      tags
       production_date
       release_date
       revenue
@@ -35,12 +36,13 @@ export const onUpdateMovie = /* GraphQL */ `
   subscription OnUpdateMovie {
     onUpdateMovie {
       id
-      name
-      original_name
+      title
+      original_title
       description
       trailer_url
       thumbnail_img
       pg_rating
+      tags
       production_date
       release_date
       revenue
@@ -65,12 +67,13 @@ export const onDeleteMovie = /* GraphQL */ `
   subscription OnDeleteMovie {
     onDeleteMovie {
       id
-      name
-      original_name
+      title
+      original_title
       description
       trailer_url
       thumbnail_img
       pg_rating
+      tags
       production_date
       release_date
       revenue
@@ -98,12 +101,13 @@ export const onCreateComment = /* GraphQL */ `
       movieID
       movie {
         id
-        name
-        original_name
+        title
+        original_title
         description
         trailer_url
         thumbnail_img
         pg_rating
+        tags
         production_date
         release_date
         revenue
@@ -132,12 +136,13 @@ export const onUpdateComment = /* GraphQL */ `
       movieID
       movie {
         id
-        name
-        original_name
+        title
+        original_title
         description
         trailer_url
         thumbnail_img
         pg_rating
+        tags
         production_date
         release_date
         revenue
@@ -166,12 +171,13 @@ export const onDeleteComment = /* GraphQL */ `
       movieID
       movie {
         id
-        name
-        original_name
+        title
+        original_title
         description
         trailer_url
         thumbnail_img
         pg_rating
+        tags
         production_date
         release_date
         revenue

@@ -1,7 +1,7 @@
 import React from 'react';
 import AuthContextProvider from './AuthContextProvider';
 import AwsContextProvider from './AwsContextProvider';
-// import JobsContextProvider from './JobsContextProvider';
+import MoviesContextProvider from './MoviesContextProvider';
 // import BlogContextProvider from './BlogContextProvider';
 
 const GlobalContext = ({ children }) => {
@@ -9,11 +9,11 @@ const GlobalContext = ({ children }) => {
 
     <AuthContextProvider>
       <AwsContextProvider>
-        {/* <JobsContextProvider>
-          <BlogContextProvider> */}
+        <MoviesContextProvider>
+          {/* <BlogContextProvider> */}
             {children}
-          {/* </BlogContextProvider>
-        </JobsContextProvider> */}
+          {/* </BlogContextProvider> */}
+        </MoviesContextProvider>
       </AwsContextProvider>
     </AuthContextProvider>
   );

@@ -1,0 +1,35 @@
+{
+  "paths": [
+    {
+      "name": "/metadatadb",
+      "lambdaFunction": "metadatalambda",
+      "privacy": {
+        "open": true
+      },
+      "policyResourceName": "/metadatadb"
+    }
+  ],
+  "resourceName": "metadatadbrest",
+  "apiName": "metadatadbrest",
+  "functionArns": [
+    {
+      "lambdaFunction": "metadatalambda"
+    }
+  ],
+  "privacy": {
+    "auth": 0,
+    "unauth": 0,
+    "authRoleName": "amplify-shelfui-dev-123433-authRole",
+    "unAuthRoleName": "amplify-shelfui-dev-123433-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "metadatalambda",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}

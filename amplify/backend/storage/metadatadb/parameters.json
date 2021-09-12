@@ -1,0 +1,7 @@
+{
+    "tableName": "movie",
+    "partitionKeyName": "id",
+    "partitionKeyType": "S",
+    "sortKeyName": "title",
+    "sortKeyType": "S"
+}
