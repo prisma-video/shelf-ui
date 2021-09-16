@@ -103,7 +103,6 @@ export function useProvideAuth(authClient) {
     if (identity) {
       setIsAuthenticatedLocal(true);
       _setIdentity(identity);
-      refreshNFTs();
     } else {
       console.error("Could not get identity from identity provider");
     }

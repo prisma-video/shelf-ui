@@ -11,8 +11,8 @@ const MovieThumbnails = ({movies}) => (
     <div className="container">
         <div className="row row--grid">
 
-            { 
-                movies.map(movie => (
+            {
+                movies && movies.map(movie => (
                     <div className="col-6 col-sm-4 col-md-3 col-xl-2" key={movie.id}>
                         <div className="card">
                             <div className="card__cover">
@@ -25,7 +25,7 @@ const MovieThumbnails = ({movies}) => (
                             <div className="card__content">v
                                 <h3 className="card__title"><a href="details.html">{movie.title}</a></h3>
                                 <span className="card__category">
-                                    {movie.tags.map(tag => <a href={`/catalog?tag`} key={movie.id+tag}>{tag}</a>)}
+                                    {movie.tags && movie.tags.map(tag => <a href={`/catalog?tag`} key={movie.id+tag}>{tag}</a>)}
                                 </span>
                             </div>
                         </div>

@@ -10,7 +10,6 @@ import MainView from './containers/MainView';
 import SignInView from './containers/SignInView';
 import CatalogView from './containers/CatalogView';
 import MovieView from './containers/MovieView';
-import MyShelfView from './containers/MyShelfView';
 
 const meta = {
   title: 'The SHELF',
@@ -30,8 +29,8 @@ function App() {
       <Switch>
         <Route path ="/movie" component={MovieView} />
         <Route path ="/singin" component={SignInView} />
-        <Route path ="/catalog" component={CatalogView} />
-        <Route path ="/myshelf" component={MyShelfView} />
+        <Route path ="/catalog" component={() => <CatalogView myshelf={false} />} />
+        <Route path ="/myshelf" component={() => <CatalogView myshelf={true} />} />
         <Route exact path ="/" component={MainView} />
       </Switch>
       <Footer />

@@ -1,32 +1,32 @@
-const path = require("path");
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
-const InterpolateHtmlPlugin = require("interpolate-html-plugin");
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const TerserPlugin = require('terser-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin');
+// const InterpolateHtmlPlugin = require('interpolate-html-plugin')
 
 let localCanisters, prodCanisters, canisters;
 
 function initCanisterIds() {
   try {
-    localCanisters = require(path.resolve(".dfx", "local", "canister_ids.json"));
+    localCanisters = require(path.resolve('.dfx', 'local', 'canister_ids.json'));
   } catch (error) {
-    console.log("No local canister_ids.json found. Continuing production");
+    console.log('No local canister_ids.json found. Continuing production');
   }
   try {
-    prodCanisters = require(path.resolve("canister_ids.json"));
+    prodCanisters = require(path.resolve('canister_ids.json'));
   } catch (error) {
-    console.log("No production canister_ids.json found. Continuing with local");
+    console.log('No production canister_ids.json found. Continuing with local');
   }
 
   const network =
     process.env.DFX_NETWORK ||
-    (process.env.NODE_ENV === "production" ? "ic" : "local");
+    (process.env.NODE_ENV === 'production' ? 'ic' : 'local');
 
-  canisters = network === "local" ? localCanisters : prodCanisters;
+  canisters = network === 'local' ? localCanisters : prodCanisters;
 
   for (const canister in canisters) {
-    process.env[canister.toUpperCase() + "_CANISTER_ID"] =
+    process.env[canister.toUpperCase() + '_CANISTER_ID'] =
       canisters[canister][network];
   }
 }
