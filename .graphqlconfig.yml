@@ -1,0 +1,18 @@
+projects:
+  metadatadb:
+    schemaPath: amplify/backend/api/metadatadb/build/schema.graphql
+    includes:
+      - src/shelf_ui/graphql/**/*.js
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: src/graphql
+        region: eu-central-1
+        apiId: null
+        maxDepth: 2
+extensions:
+  amplify:
+    version: 3

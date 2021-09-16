@@ -1,0 +1,118 @@
+type movieNFT = 
+ service {
+   acceptCycles: () -> ();
+   allowance: (AllowanceRequest) -> (Result) query;
+   approve: (ApproveRequest) -> ();
+   availableCycles: () -> (nat) query;
+   balance: (BalanceRequest) -> (BalanceResponse) query;
+   getAllowances: () -> (vec record {
+                               TokenIndex;
+                               principal;
+                             }) query;
+   getCaller: () -> (principal) query;
+   getMinter: () -> (principal) query;
+   getNFTsOfOwner: () -> (vec record {
+                                TokenIndex;
+                                principal;
+                              }) query;
+   getRegistry: () -> (vec record {
+                             TokenIndex;
+                             AccountIdentifier__1;
+                           }) query;
+   getTokens: () -> (vec record {
+                           TokenIndex;
+                           blob;
+                         }) query;
+   metadata: (TokenIdentifier__1) -> (Result_2) query;
+   mintNFT: (principal, text) -> (TokenIndex);
+   ownerOf: (TokenIdentifier__1) -> (Result_1) query;
+   setMinter: (principal) -> ();
+   totalSupply: (TokenIdentifier__1) -> (Result) query;
+   transferFrom: (TransferRequest) -> (TransferResponse);
+ };
+type User = 
+ variant {
+   address: AccountIdentifier;
+   "principal": principal;
+ };
+type TransferResponse = 
+ variant {
+   err:
+    variant {
+      CannotNotify: AccountIdentifier;
+      InsufficientBalance;
+      InvalidToken: TokenIdentifier;
+      Other: text;
+      Rejected;
+      Unauthorized: AccountIdentifier;
+    };
+   ok: Balance;
+ };
+type TransferRequest = 
+ record {
+   amount: Balance;
+   from: User;
+   memo: Memo;
+   notify: bool;
+   subaccount: opt SubAccount;
+   to: User;
+   token: TokenIdentifier;
+ };
+type TokenIndex = nat32;
+type TokenIdentifier__1 = text;
+type TokenIdentifier = text;
+type SubAccount = vec nat8;
+type Result_2 = 
+ variant {
+   err: CommonError;
+   ok: blob;
+ };
+type Result_1 = 
+ variant {
+   err: CommonError;
+   ok: AccountIdentifier__1;
+ };
+type Result = 
+ variant {
+   err: CommonError;
+   ok: Balance__1;
+ };
+type Memo = blob;
+type CommonError__1 = 
+ variant {
+   InvalidToken: TokenIdentifier;
+   Other: text;
+ };
+type CommonError = 
+ variant {
+   InvalidToken: TokenIdentifier;
+   Other: text;
+ };
+type Balance__1 = nat;
+type BalanceResponse = 
+ variant {
+   err: CommonError__1;
+   ok: Balance;
+ };
+type BalanceRequest = 
+ record {
+   token: TokenIdentifier;
+   user: User;
+ };
+type Balance = nat;
+type ApproveRequest = 
+ record {
+   allowance: Balance;
+   spender: principal;
+   subaccount: opt SubAccount;
+   token: TokenIdentifier;
+ };
+type AllowanceRequest = 
+ record {
+   owner: User;
+   spender: principal;
+   token: TokenIdentifier;
+ };
+type AccountIdentifier__1 = text;
+type AccountIdentifier = text;
+service : (principal) -> movieNFT

@@ -1,0 +1,35 @@
+type Movie @model {
+  id: ID!
+  title: String!
+  original_title: String
+  description: String
+  trailer_url: String
+  thumbnail_img: String
+  pg_rating: String
+  tags: [String]
+
+  production_date: String
+  release_date: String
+
+  revenue: Int
+  box_office: Int
+
+  imbd_url: String
+  imbd_score: Int
+  rotten_tomatoes_url: String
+  rotten_tomatoes_score: Int
+
+  directors: [String]
+  writers: [String]
+  producers: [String]
+  actors: [String]
+
+  comments: [Comment] @connection(keyName: "byMovie", fields: ["id"])
+}
+
+type Comment @model @key(name: "byMovie", fields: ["movieID", "content"]) {
+  id: ID!
+  movieID: ID!
+  movie: Movie @connection(fields: ["movieID"])
+  content: String!
+}

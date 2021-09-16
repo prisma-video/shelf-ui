@@ -1,26 +1,31 @@
 {
   "canisters": {
-    "shelf_ui": {
-      "main": "src/shelf_ui/main.mo",
+    "authprovider": {
+      "main": "src/authprovider/auth.mo",
       "type": "motoko"
     },
-    "shelf_ui_assets": {
+    "nft": {
+      "main": "src/nft/nft.mo",
+      "type": "motoko"
+    },
+    "shelf_ui": {
       "dependencies": [
-        "shelf_ui"
+        "authprovider",
+        "nft"
       ],
       "frontend": {
-        "entrypoint": "src/shelf_ui_assets/src/index.html"
+        "entrypoint": "src/shelf_ui/public/index.html"
       },
       "source": [
-        "src/shelf_ui_assets/assets",
-        "dist/shelf_ui_assets/"
+        "src/shelf_ui/assets",
+        "src/shelf_ui/src"
       ],
       "type": "assets"
     }
   },
   "defaults": {
     "build": {
-      "args": "",
+      "output": "src/declarations/",
       "packtool": ""
     }
   },

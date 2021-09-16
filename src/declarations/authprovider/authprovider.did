@@ -1,0 +1,26 @@
+type anon_class_6_1 = 
+ service {
+   assign_role: (principal, opt Role) -> ();
+   callerPrincipal: () -> (principal);
+   get_role_requests: () -> (List);
+   get_roles: () -> (List);
+   greet: (text) -> (text);
+   my_role: () -> (opt Role);
+   my_role_request: () -> (opt Role);
+   request_role: (Role) -> (principal);
+ };
+type Role = 
+ variant {
+   admin;
+   authorized;
+   owner;
+ };
+type List = 
+ opt record {
+       record {
+         principal;
+         Role;
+       };
+       List;
+     };
+service : () -> anon_class_6_1

@@ -1,0 +1,8 @@
+{
+    "CreateAPIKey": 1,
+    "AppSyncApiName": "metadatadb",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "S3DeploymentBucket": "amplify-shelfui-dev-123433-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/3bd1f2fb3bfb17b589db43bb917afa213964ef73"
+}
