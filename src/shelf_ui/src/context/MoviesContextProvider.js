@@ -13,7 +13,7 @@ import {
 const initialValue = {
   movies: [],
   my_movies: [],
-  movie: {},
+  movie_data: {},
   loading: true,
   error: '',
 };
@@ -82,19 +82,16 @@ const MovieContextProvider = ({ children }) => {
   };
   const getMoviesRequest = async () => {
     const data = await listNFTs();
-    const movieIds = data.map(x => x[1].properties.internal_id);
-    console.log("CALL 1", data[1][1]);
-    console.log("CALL 1.1", movieIds);
+    const movieIds = data.map(x => parseInt(x[1].properties.internal_id));
+    console.log("CALL 1");
 
-    const movieData = await fetch("../DB/mockup.json")
-      .then(response => response.json())
-      .filter(({id}) => movieIds.includes(id));
-    console.log("CALL 1.2", movieData);
+    const movieData = require("../mockup");
+    const movieData1 = movieData.filter(movie => movieIds.includes(movie.id));
         
-    if (data && data.length) {
-      dispatch({ type: 'GET_MOVIES_SUCCESS', payload: data });
+    if (movieData1 && movieData1.length) {
+      dispatch({ type: 'GET_MOVIES_SUCCESS', payload: movieData1 });
     } else {
-      dispatch({ type: 'GET_MOVIES_ERROR', payload: data });
+      dispatch({ type: 'GET_MOVIES_ERROR', payload: movieData1 });
     }
   };
 
@@ -108,15 +105,24 @@ const MovieContextProvider = ({ children }) => {
     }
   };
   
-  // const getMovieByIdRequest = async (inputVariables) => {
-  //   // const result = await API.graphql(graphqlOperation(GET_MOVIE_BY_ID, inputVariables));
+  const getMovieByIdRequest = async (id) => {
+    const movieData = require("../mockup");
+    const movieData1 = movieData.filter(movie => movie.id == id);
+        
+    console.log("CALL 3");
+    if (movieData1 && movieData1.length) {
+      dispatch({ type: 'GET_MOVIE_SUCCESS', payload: movieData1[0] });
+    } else {
+      dispatch({ type: 'GET_MOVIE_ERROR', payload: movieData1 });
+    }
+    // const result = await API.graphql(graphqlOperation(GET_MOVIE_BY_ID, inputVariables));
     
-  //   // if (result.data && result.data.getJob.id) {
-  //   //   dispatch({ type: 'GET_MOVIE_SUCCESS', payload: result.data.getJob });
-  //   // } else {
-  //   //   dispatch({ type: 'GET_MOVIE_ERROR', payload: result.error });
-  //   // }
-  // };
+    // if (result.data && result.data.getJob.id) {
+    //   dispatch({ type: 'GET_MOVIE_SUCCESS', payload: result.data.getJob });
+    // } else {
+    //   dispatch({ type: 'GET_MOVIE_ERROR', payload: result.error });
+    // }
+  };
 
   React.useEffect(() => {
     getMovieCategoryRequest();
@@ -126,7 +132,7 @@ const MovieContextProvider = ({ children }) => {
 
   return (
     <MoviesContext.Provider
-      value={{ ...value, dispatch, getMovieCategoryRequest, getMoviesRequest, getMyMoviesRequest }}
+      value={{ ...value, dispatch, getMovieCategoryRequest, getMoviesRequest, getMyMoviesRequest, getMovieByIdRequest }}
     >
       {children}
     </MoviesContext.Provider>

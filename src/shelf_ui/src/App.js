@@ -27,7 +27,7 @@ function App() {
     <GlobalContext>
       <Header />
       <Switch>
-        <Route path ="/movie" component={MovieView} />
+        <Route path ="/movie/:id" component={MovieView} />
         <Route path ="/singin" component={SignInView} />
         <Route path ="/catalog" component={() => <CatalogView myshelf={false} />} />
         <Route path ="/myshelf" component={() => <CatalogView myshelf={true} />} />

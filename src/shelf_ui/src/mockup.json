@@ -2,9 +2,9 @@
   {
     "adult": false,
     "backdrop_path": "/6MKr3KgOLmzOP6MSuZERO41Lpkt.jpg",
-    "genre_ids": [
-      35,
-      80
+    "tags": [
+      "Comedy",
+      "Crime"
     ],
     "id": 337404,
     "original_language": "en",
@@ -16,13 +16,15 @@
     "title": "Cruella",
     "video": false,
     "vote_average": 8.8,
-    "vote_count": 1415
+    "vote_count": 1415,
+    "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
+    "directors": ["Vince Gilligan"]
   },
   {
     "adult": false,
     "backdrop_path": "/wwFBRyekDcKXJwP0mImRJjAnudL.jpg",
-    "genre_ids": [
-      27
+    "tags": [
+      "Horror"
     ],
     "id": 632357,
     "original_language": "en",
@@ -34,15 +36,17 @@
     "title": "The Unholy",
     "video": false,
     "vote_average": 7.1,
-    "vote_count": 742
+    "vote_count": 742,
+    "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
+    "directors": ["Vince Gilligan"]
   },
   {
     "adult": false,
     "backdrop_path": "/9WlJFhOSCPnaaSmsrv0B4zA8iUb.jpg",
-    "genre_ids": [
-      28,
-      27,
-      53
+    "tags": [
+      "Action",
+      "Horror",
+      "Thriller"
     ],
     "id": 503736,
     "original_language": "en",
@@ -54,14 +58,16 @@
     "title": "Army of the Dead",
     "video": false,
     "vote_average": 6.6,
-    "vote_count": 1256
+    "vote_count": 1256,
+    "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
+    "directors": ["Vince Gilligan"]
   },
   {
     "adult": false,
     "backdrop_path": "/77tui163estZrQ78NBggqDB4n2C.jpg",
-    "genre_ids": [
-      28,
-      80
+    "tags": [
+      "Action",
+      "Crime"
     ],
     "id": 637649,
     "original_language": "en",
@@ -73,15 +79,17 @@
     "title": "Wrath of Man",
     "video": false,
     "vote_average": 8,
-    "vote_count": 575
+    "vote_count": 575,
+    "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
+    "directors": ["Vince Gilligan"]
   },
   {
     "adult": false,
     "backdrop_path": "/mPBI506o7gITnjoSkcyPneK9s8n.jpg",
-    "genre_ids": [
-      28,
-      14,
-      12
+    "tags": [
+      "Action",
+      "Drama",
+      "Adventure"
     ],
     "id": 460465,
     "original_language": "en",
@@ -93,16 +101,18 @@
     "title": "Mortal Kombat",
     "video": false,
     "vote_average": 7.6,
-    "vote_count": 2819
+    "vote_count": 2819,
+    "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
+    "directors": ["Vince Gilligan"]
   },
   {
     "adult": false,
     "backdrop_path": "/yyWNPhP1HR4BTLErHcZwIUsMBvA.jpg",
-    "genre_ids": [
-      80,
-      18,
-      9648,
-      53
+    "tags": [
+      "Crime",
+      "Drama",
+      "Mystery",
+      "Thriller"
     ],
     "id": 823855,
     "original_language": "en",
@@ -114,15 +124,17 @@
     "title": "I Am All Girls",
     "video": false,
     "vote_average": 7,
-    "vote_count": 89
+    "vote_count": 89,
+    "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
+    "directors": ["Vince Gilligan"]
   },
   {
     "adult": false,
     "backdrop_path": "/fPGeS6jgdLovQAKunNHX8l0avCy.jpg",
-    "genre_ids": [
-      28,
-      53,
-      10752
+    "tags": [
+      "Action",
+      "Thriller",
+      "War"
     ],
     "id": 567189,
     "original_language": "en",
@@ -134,15 +146,17 @@
     "title": "Tom Clancy's Without Remorse",
     "video": false,
     "vote_average": 7.2,
-    "vote_count": 1081
+    "vote_count": 1081,
+    "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
+    "directors": ["Vince Gilligan"]
   },
   {
     "adult": false,
     "backdrop_path": "/inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg",
-    "genre_ids": [
-      28,
-      12,
-      878
+    "tags": [
+      "Action",
+      "Adventure",
+      "Science Fiction"
     ],
     "id": 399566,
     "original_language": "en",
@@ -154,16 +168,18 @@
     "title": "Godzilla vs. Kong",
     "video": false,
     "vote_average": 8.1,
-    "vote_count": 5792
+    "vote_count": 5792,
+    "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
+    "directors": ["Vince Gilligan"]
   },
   {
     "adult": false,
     "backdrop_path": "/iDdpiUnCeXvBmrkBFpL6lKsZt33.jpg",
-    "genre_ids": [
-      53,
-      18,
-      28,
-      9648
+    "tags": [
+      "Thriller",
+      "Drama",
+      "Action",
+      "Mystery"
     ],
     "id": 578701,
     "original_language": "en",
@@ -175,15 +191,17 @@
     "title": "Those Who Wish Me Dead",
     "video": false,
     "vote_average": 7,
-    "vote_count": 362
+    "vote_count": 362,
+    "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
+    "directors": ["Vince Gilligan"]
   },
   {
     "adult": false,
     "backdrop_path": "/efrdAWS63s8TTWdrI2uNdIhn1dj.jpg",
-    "genre_ids": [
-      53,
-      28,
-      80
+    "tags": [
+      "Thriller",
+      "Action",
+      "Crime"
     ],
     "id": 808023,
     "original_language": "en",
@@ -195,16 +213,18 @@
     "title": "The Virtuoso",
     "video": false,
     "vote_average": 6.1,
-    "vote_count": 99
+    "vote_count": 99,
+    "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
+    "directors": ["Vince Gilligan"]
   },
   {
     "adult": false,
     "backdrop_path": "/6zbKgwgaaCyyBXE4Sun4oWQfQmi.jpg",
-    "genre_ids": [
-      28,
-      53,
-      80,
-      35
+    "tags": [
+      "Action",
+      "Thriller",
+      "Crime",
+      "Comedy"
     ],
     "id": 615457,
     "original_language": "en",
@@ -216,15 +236,17 @@
     "title": "Nobody",
     "video": false,
     "vote_average": 8.5,
-    "vote_count": 1789
+    "vote_count": 1789,
+    "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
+    "directors": ["Vince Gilligan"]
   },
   {
     "adult": false,
     "backdrop_path": "/hP7dN2B5ztQgSIN5Qvk63MY4EeO.jpg",
-    "genre_ids": [
-      35,
-      99,
-      10770
+    "tags": [
+      "Comedy",
+      "Documentary",
+      "TV Movie"
     ],
     "id": 691179,
     "original_language": "en",
@@ -236,15 +258,17 @@
     "title": "Friends: The Reunion",
     "video": false,
     "vote_average": 8.5,
-    "vote_count": 282
+    "vote_count": 282,
+    "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
+    "directors": ["Vince Gilligan"]
   },
   {
     "adult": false,
     "backdrop_path": "/mYM8x2Atv4MaLulaV0KVJWI1Djv.jpg",
-    "genre_ids": [
-      28,
-      80,
-      53
+    "tags": [
+      "Action",
+      "Crime",
+      "Thriller"
     ],
     "id": 804435,
     "original_language": "en",
@@ -256,15 +280,17 @@
     "title": "Vanquish",
     "video": false,
     "vote_average": 6,
-    "vote_count": 112
+    "vote_count": 112,
+    "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
+    "directors": ["Vince Gilligan"]
   },
   {
     "adult": false,
     "backdrop_path": "/fejok33Ijc6SppiEU1cfwA9Mo2.jpg",
-    "genre_ids": [
-      28,
-      80,
-      18
+    "tags": [
+      "Action",
+      "Crime",
+      "Drama"
     ],
     "id": 717192,
     "original_language": "nl",
@@ -276,17 +302,18 @@
     "title": "Ferry",
     "video": false,
     "vote_average": 7.1,
-    "vote_count": 74
+    "vote_count": 74,
+    "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
+    "directors": ["Vince Gilligan"]
   },
   {
     "adult": false,
     "backdrop_path": "/xPpXYnCWfjkt3zzE0dpCNME1pXF.jpg",
-    "genre_ids": [
-      16,
-      28,
-      12,
-      14,
-      18
+    "tags": [
+      "Animation",
+      "Action",
+      "Adventure",
+      "Drama"
     ],
     "id": 635302,
     "original_language": "ja",
@@ -298,15 +325,17 @@
     "title": "Demon Slayer -Kimetsu no Yaiba- The Movie: Mugen Train",
     "video": false,
     "vote_average": 8.4,
-    "vote_count": 1106
+    "vote_count": 1106,
+    "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
+    "directors": ["Vince Gilligan"]
   },
   {
     "adult": false,
     "backdrop_path": "/z2UtGA1WggESspi6KOXeo66lvLx.jpg",
-    "genre_ids": [
-      18,
-      878,
-      53
+    "tags": [
+      "Drama",
+      "Science Fiction",
+      "Thriller"
     ],
     "id": 520763,
     "original_language": "en",
@@ -318,15 +347,17 @@
     "title": "A Quiet Place Part II",
     "video": false,
     "vote_average": 7.4,
-    "vote_count": 110
+    "vote_count": 110,
+    "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
+    "directors": ["Vince Gilligan"]
   },
   {
     "adult": false,
     "backdrop_path": "/qqkpwhiB1BQcSvegL10uHKMzKKl.jpg",
-    "genre_ids": [
-      16,
-      35,
-      14
+    "tags": [
+      "Animation",
+      "Comedy",
+      "Drama"
     ],
     "id": 813258,
     "original_language": "en",
@@ -338,16 +369,18 @@
     "title": "Monster Pets: A Hotel Transylvania Short",
     "video": false,
     "vote_average": 7.6,
-    "vote_count": 148
+    "vote_count": 148,
+    "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
+    "directors": ["Vince Gilligan"]
   },
   {
     "adult": false,
     "backdrop_path": "/rlNnwObbMu5G2FaOUlacnUIdIIA.jpg",
-    "genre_ids": [
-      16,
-      35,
-      10751,
-      12
+    "tags": [
+      "Animation",
+      "Comedy",
+      "Family",
+      "Adventure"
     ],
     "id": 726684,
     "original_language": "fr",
@@ -359,17 +392,19 @@
     "title": "Miraculous World: Shanghai – The Legend of Ladydragon",
     "video": false,
     "vote_average": 7.8,
-    "vote_count": 371
+    "vote_count": 371,
+    "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
+    "directors": ["Vince Gilligan"]
   },
   {
     "adult": false,
     "backdrop_path": "/hJuDvwzS0SPlsE6MNFOpznQltDZ.jpg",
-    "genre_ids": [
-      16,
-      12,
-      14,
-      10751,
-      28
+    "tags": [
+      "Animation",
+      "Adventure",
+      "Drama",
+      "Family",
+      "Action"
     ],
     "id": 527774,
     "original_language": "en",
@@ -381,14 +416,16 @@
     "title": "Raya and the Last Dragon",
     "video": false,
     "vote_average": 8.2,
-    "vote_count": 2989
+    "vote_count": 2989,
+    "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
+    "directors": ["Vince Gilligan"]
   },
   {
     "adult": false,
     "backdrop_path": "/yC4DRg5aGgNpkHpUDpLtBqzownS.jpg",
-    "genre_ids": [
-      878,
-      28
+    "tags": [
+      "Science Fiction",
+      "Action"
     ],
     "id": 586047,
     "original_language": "ko",
@@ -400,6 +437,8 @@
     "title": "Seobok",
     "video": false,
     "vote_average": 7.7,
-    "vote_count": 53
+    "vote_count": 53,
+    "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
+    "directors": ["Vince Gilligan"]
   }
 ]

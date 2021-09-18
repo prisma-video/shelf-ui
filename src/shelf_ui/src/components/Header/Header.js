@@ -19,7 +19,7 @@ const Header = () => {
                 <div className="col-12">
                     <div className="header__content">
                         <Link to="/" className="header__logo">
-                        <img src="./img/logo.svg" alt="" className="header__logo" />
+                        <img src="/img/logo.svg" alt="" className="header__logo" />
                         </Link>
                         <ul className="header__nav">
                         <li className="header__nav-item">
