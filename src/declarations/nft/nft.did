@@ -40,6 +40,7 @@ type TokenMetadata =
       title: text;
     };
  };
+type TokenIndex__1 = nat32;
 type TokenIndex = nat32;
 type Result_2 = 
  variant {
@@ -61,7 +62,7 @@ type Result =
  };
 type CommonError = 
  variant {
-   InvalidToken: TokenIndex;
+   InvalidToken: TokenIndex__1;
    Other: text;
  };
 type Balance = nat;

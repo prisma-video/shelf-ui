@@ -1,7 +1,7 @@
 {
   "canisters": {
-    "authprovider": {
-      "main": "src/authprovider/auth.mo",
+    "user": {
+      "main": "src/user/user.mo",
       "type": "motoko"
     },
     "nft": {
@@ -10,7 +10,7 @@
     },
     "shelf_ui": {
       "dependencies": [
-        "authprovider",
+        "user",
         "nft"
       ],
       "frontend": {

@@ -3,66 +3,40 @@ import HashMap "mo:base/HashMap";
 import Principal "mo:base/Principal";
 import Result "mo:base/Result";
 import Iter "mo:base/Iter";
-import Text "mo:base/Text";
 import Array "mo:base/Array";
 import Nat "mo:base/Nat";
-import Nat32 "mo:base/Nat32";
 import Int "mo:base/Int";
 import List "mo:base/List";
 import Bool "mo:base/Bool";
-import Hash "mo:base/Hash";
+
+import Types "./types";
 
 shared (install) actor class movieNFT(mintingAuthority: Principal) = this {
   
-  public type Balance = Nat;
-  public type TokenIndex = Nat32;
-  private module TokenIndex = {
-    public func equal(x : TokenIndex, y : TokenIndex) : Bool {
-      return Nat32.equal(x, y);
-    };
-    public func hash(x : TokenIndex) : Hash.Hash {
-      return x;
-    };
-  };
-  
-  public type CommonError = {
-    #InvalidToken: TokenIndex;
-    #Other : Text;
-  };
-
-  type TokenMetadata = {
-    name : Text;
-    description : Text;
-    properties : {
-      title : Text;
-      internal_id : Text;
-      shipment_id : Text;
-      original_owner : Principal;
-      metadata_version : Nat;
-      previous_metadata : Text;
-    };
-  };
+  type Balance = Types.Balance;
+  type TokenIndex = Types.TokenIndex;
+  type TokenMetadata = Types.TokenMetadata;
+  type CommonError = Types.CommonError;
 
   //State work
   private stable var _ownersState : [(TokenIndex, Principal)] = [];
-  private var _owners : HashMap.HashMap<TokenIndex, Principal> = HashMap.fromIter(_ownersState.vals(), 0, Nat32.equal, TokenIndex.hash);
+  private var _owners : HashMap.HashMap<TokenIndex, Principal> = HashMap.fromIter(_ownersState.vals(), 0, Types.TokenIndex.equal, Types.TokenIndex.hash);
 	
   private stable var _balancesState : [(Principal, Nat)] = [];
   private var _balances : HashMap.HashMap<Principal, Nat> = HashMap.fromIter(_balancesState.vals(), 0, Principal.equal, Principal.hash);
 	
   private stable var _tokenApprovalsState : [(TokenIndex, Principal)] = [];
-  private var _tokenApprovals : HashMap.HashMap<TokenIndex, Principal> = HashMap.fromIter(_tokenApprovalsState.vals(), 0, Nat32.equal, TokenIndex.hash);
+  private var _tokenApprovals : HashMap.HashMap<TokenIndex, Principal> = HashMap.fromIter(_tokenApprovalsState.vals(), 0, Types.TokenIndex.equal, Types.TokenIndex.hash);
 		
 	private stable var _ownedTokenState : [(Principal, List.List<TokenIndex>)] = [];
   private var _ownedTokens : HashMap.HashMap<Principal, List.List<TokenIndex>> = HashMap.fromIter(_ownedTokenState.vals(), 0, Principal.equal, Principal.hash);
   
 	private stable var _tokenMetadataState : [(TokenIndex, TokenMetadata)] = [];
-  private var _tokenMetadata : HashMap.HashMap<TokenIndex, TokenMetadata> = HashMap.fromIter(_tokenMetadataState.vals(), 0, Nat32.equal, TokenIndex.hash);
+  private var _tokenMetadata : HashMap.HashMap<TokenIndex, TokenMetadata> = HashMap.fromIter(_tokenMetadataState.vals(), 0, Types.TokenIndex.equal, Types.TokenIndex.hash);
   
   private stable var _supply : Balance  = 0;
   private stable var _mintingAuthority : Principal  = mintingAuthority;
   private stable var _nextTokenId : TokenIndex  = 0;
-
 
   //State functions
   system func preupgrade() {
@@ -154,7 +128,6 @@ shared (install) actor class movieNFT(mintingAuthority: Principal) = this {
 		assert(msg.caller == _mintingAuthority);
 		// assert(to == _mintingAuthority); "ERC721: mint to the zero address")
 		// assert(!_exists(tokenId));"ERC721: token already minted"
-		// let md : Blob = Text.encodeUtf8(metadata);
 		(await _mint(to, _nextTokenId, metadata));
 	};
 
@@ -166,7 +139,7 @@ shared (install) actor class movieNFT(mintingAuthority: Principal) = this {
     // Update owned tokens
     switch(_ownedTokens.get(to)) {
       case (?_tokenList) {
-				let res : ?List.List<TokenIndex> =_ownedTokens.replace(to, List.push<TokenIndex>(token, _tokenList));
+				_ownedTokens.put(to, List.push<TokenIndex>(token, _tokenList));
       };
       case (_) {
         _ownedTokens.put(to, List.make<TokenIndex>(token));
@@ -223,7 +196,7 @@ shared (install) actor class movieNFT(mintingAuthority: Principal) = this {
     assert(Result.isOk(await this._updateBalance(from, -1)));
     assert(Result.isOk(await this._updateBalance(to, 1)));
 
-    let res3 : ?Principal = _owners.replace(token, to);
+    _owners.put(token, to);
   };
 
 
@@ -244,11 +217,11 @@ shared (install) actor class movieNFT(mintingAuthority: Principal) = this {
     assert(Int.notEqual(add, 0));
     switch(_balances.get(user)) {
       case (?_balance) {
-        var newBalance : Nat = _balance;
+        var newBalance : Balance = _balance;
         if(Int.equal(add, -1)) { newBalance := Nat.sub(_balance, 1) }
         else { newBalance := Nat.add(_balance, 1) };
-        let res : ?Nat = _balances.replace(user, newBalance);
-				return #ok(1);
+        _balances.put(user, newBalance);
+				return #ok(newBalance);
       };
       case (_) {
         if(Int.equal(add, 1)) { _balances.put(user, 1); }

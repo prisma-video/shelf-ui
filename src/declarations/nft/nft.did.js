@@ -1,8 +1,9 @@
 export const idlFactory = ({ IDL }) => {
   const TokenIndex = IDL.Nat32;
   const Balance = IDL.Nat;
+  const TokenIndex__1 = IDL.Nat32;
   const CommonError = IDL.Variant({
-    'InvalidToken' : TokenIndex,
+    'InvalidToken' : TokenIndex__1,
     'Other' : IDL.Text,
   });
   const Result = IDL.Variant({ 'ok' : Balance, 'err' : CommonError });

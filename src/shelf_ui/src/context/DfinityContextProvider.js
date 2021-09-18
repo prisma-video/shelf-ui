@@ -5,6 +5,8 @@ import { authClient as authenticationClient } from "./DfinityAuthClient";
 import {
   getUserFromCanister,
   getUserFromStorage,
+  getUserProfile,
+  createNewUser,
   KEY_LOCALSTORAGE_USER,
 } from "../utils/index";
 
@@ -17,6 +19,7 @@ export function useProvideAuth(authClient) {
   const [isAuthClientReady, setAuthClientReady] = useState(false);
 //   const [urlWithSearch] = useState(globalThis.location.search);
   const [urlWithSearch] = useState();
+  const [userProfile, _setUserProfile] = useState();
 
   // Creating the auth client is async and no auth related checks can happen
   // until it's ready so we set a state variable to keep track of it
@@ -103,8 +106,21 @@ export function useProvideAuth(authClient) {
     if (identity) {
       setIsAuthenticatedLocal(true);
       _setIdentity(identity);
+      logInApp();
     } else {
       console.error("Could not get identity from identity provider");
+    }
+  };
+
+  // Login to the App
+  const logInApp = async function () {
+    const _userProfile = getUserProfile();
+    if(_userProfile.emailAddress) {
+      _setUserProfile(_userProfile);
+    } else {
+      // registering new user in the DB
+      createNewUser();
+      _setUserProfile({"lol": "NTM FDP"})
     }
   };
 
@@ -125,6 +141,7 @@ export function useProvideAuth(authClient) {
     user,
     identity,
     setUser,
+    userProfile,
   };
 }
 
@@ -137,6 +154,7 @@ const dfinityAuthContext = createContext({
     logOut: () => {},
     user: undefined,
     setUser: () => {},
+    userProfile: undefined,
   });
 
 export function DfinityAuth({ children }) {

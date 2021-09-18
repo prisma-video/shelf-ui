@@ -1,6 +1,6 @@
 import type { Principal } from '@dfinity/principal';
 export type Balance = bigint;
-export type CommonError = { 'InvalidToken' : TokenIndex } |
+export type CommonError = { 'InvalidToken' : TokenIndex__1 } |
   { 'Other' : string };
 export type Result = { 'ok' : Balance } |
   { 'err' : CommonError };
@@ -9,6 +9,7 @@ export type Result_1 = { 'ok' : Principal } |
 export type Result_2 = { 'ok' : Array<[TokenIndex, TokenMetadata]> } |
   { 'err' : CommonError };
 export type TokenIndex = number;
+export type TokenIndex__1 = number;
 export interface TokenMetadata {
   'name' : string,
   'description' : string,

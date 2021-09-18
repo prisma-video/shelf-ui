@@ -1,0 +1,22 @@
+type user = 
+ service {
+   assign_role: (principal, Role) -> ();
+   createNewUser: () -> ();
+   getUserProfile: () -> (opt UserProfile);
+   getUserRole: () -> (opt Role);
+ };
+type UserProfile = 
+ record {
+   communities: opt vec text;
+   doubleOptIn: bool;
+   emailAddress: opt text;
+   userName: opt text;
+ };
+type Role = 
+ variant {
+   admin;
+   ambassador;
+   authorized;
+   guest;
+ };
+service : () -> user

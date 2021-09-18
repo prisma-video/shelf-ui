@@ -164,9 +164,9 @@ module.exports = [{
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
-      AUTHPROVIDER_CANISTER_ID: canisters["authprovider"],
-      NFT_CANISTER_ID: canisters["authprovider"],
-      SHELF_UI_CANISTER_ID: canisters["nft"]
+      USER_CANISTER_ID: canisters["user"],
+      NFT_CANISTER_ID: canisters["nft"],
+      SHELF_UI_CANISTER_ID: canisters["shelf_ui"]
     }),
     new webpack.ProvidePlugin({
       Buffer: [require.resolve("buffer/"), "Buffer"],

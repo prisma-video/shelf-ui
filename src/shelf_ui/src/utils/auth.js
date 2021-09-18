@@ -1,15 +1,31 @@
-import { authprovider } from "../../../declarations/authprovider/index";
-// import { authprovider } from "ic:canister/authprovider";
+import { user } from "../../../declarations/user/index";
+
+export async function getUserProfile() {
+  const appUser = await user.getUserProfile();
+  if (appUser) {
+    return appUser;
+  } else {
+    return null;
+  }
+}
+
+export async function createNewUser() {
+  const appUser = await user.createNewUser();
+  if (appUser) {
+    return appUser;
+  } else {
+    return null;
+  }
+}
 
 export async function getUserFromCanister(userId) {
-  const icUser = await authprovider.getProfilePlus(userId);
-  console.log(icUser);
+  const icUser = await user.getProfilePlus(userId);
   if (icUser) {
     return icUser;
   } else {
     return null;
   }
-};
+}
 
 export function getUserFromStorage(storage = window.localStorage, key){
     const lsUser = storage.getItem(key);
@@ -23,4 +39,4 @@ export function getUserFromStorage(storage = window.localStorage, key){
     } else {
       return undefined;
     }
-  };
+  }
