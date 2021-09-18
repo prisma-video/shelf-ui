@@ -11,7 +11,7 @@ const Main = ({ myshelf }) => {
 	// List user's NFTs
 	useEffect(() => {
         myshelf ? getMyMoviesRequest() : getMoviesRequest();
-        console.log("catalog: ", myshelf, myshelf ? my_movies : movies);
+        // console.log("catalog: ", myshelf, myshelf ? my_movies : movies);
 	}, []);
 
     return (
@@ -19,7 +19,7 @@ const Main = ({ myshelf }) => {
     {/* <section className="section"></section> */}
     <div className="section">
         <MovieFiltersBar />
-        <MovieThumbnails />
+        <MovieThumbnails movies={myshelf ? my_movies : movies} />
     </div>
     </>
 

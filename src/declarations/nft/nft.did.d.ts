@@ -1,74 +1,59 @@
 import type { Principal } from '@dfinity/principal';
-export type AccountIdentifier = string;
-export type AccountIdentifier__1 = string;
-export interface AllowanceRequest {
-  'token' : TokenIdentifier,
-  'owner' : User,
-  'spender' : Principal,
-}
-export interface ApproveRequest {
-  'token' : TokenIdentifier,
-  'subaccount' : [] | [SubAccount],
-  'allowance' : Balance,
-  'spender' : Principal,
-}
 export type Balance = bigint;
-export interface BalanceRequest { 'token' : TokenIdentifier, 'user' : User }
-export type BalanceResponse = { 'ok' : Balance } |
-  { 'err' : CommonError__1 };
-export type Balance__1 = bigint;
-export type CommonError = { 'InvalidToken' : TokenIdentifier } |
+export type CommonError = { 'InvalidToken' : TokenIndex } |
   { 'Other' : string };
-export type CommonError__1 = { 'InvalidToken' : TokenIdentifier } |
-  { 'Other' : string };
-export type Memo = Array<number>;
-export type Result = { 'ok' : Balance__1 } |
+export type Result = { 'ok' : Balance } |
   { 'err' : CommonError };
-export type Result_1 = { 'ok' : AccountIdentifier__1 } |
+export type Result_1 = { 'ok' : Principal } |
   { 'err' : CommonError };
-export type Result_2 = { 'ok' : Array<number> } |
+export type Result_2 = { 'ok' : Array<[TokenIndex, TokenMetadata]> } |
   { 'err' : CommonError };
-export type SubAccount = Array<number>;
-export type TokenIdentifier = string;
-export type TokenIdentifier__1 = string;
 export type TokenIndex = number;
-export interface TransferRequest {
-  'to' : User,
-  'token' : TokenIdentifier,
-  'notify' : boolean,
-  'from' : User,
-  'memo' : Memo,
-  'subaccount' : [] | [SubAccount],
-  'amount' : Balance,
+export interface TokenMetadata {
+  'name' : string,
+  'description' : string,
+  'properties' : {
+    'title' : string,
+    'original_owner' : Principal,
+    'internal_id' : string,
+    'shipment_id' : string,
+    'previous_metadata' : string,
+    'metadata_version' : bigint,
+  },
 }
-export type TransferResponse = { 'ok' : Balance } |
-  {
-    'err' : { 'CannotNotify' : AccountIdentifier } |
-      { 'InsufficientBalance' : null } |
-      { 'InvalidToken' : TokenIdentifier } |
-      { 'Rejected' : null } |
-      { 'Unauthorized' : AccountIdentifier } |
-      { 'Other' : string }
-  };
-export type User = { 'principal' : Principal } |
-  { 'address' : AccountIdentifier };
 export interface movieNFT {
+  '_exists' : (arg_0: TokenIndex) => Promise<boolean>,
+  '_isApprovedOrOwner' : (arg_0: Principal, arg_1: TokenIndex) => Promise<
+      boolean
+    >,
+  '_transfer' : (
+      arg_0: Principal,
+      arg_1: Principal,
+      arg_2: TokenIndex,
+    ) => Promise<undefined>,
+  '_updateBalance' : (arg_0: Principal, arg_1: bigint) => Promise<Result>,
   'acceptCycles' : () => Promise<undefined>,
-  'allowance' : (arg_0: AllowanceRequest) => Promise<Result>,
-  'approve' : (arg_0: ApproveRequest) => Promise<undefined>,
   'availableCycles' : () => Promise<bigint>,
-  'balance' : (arg_0: BalanceRequest) => Promise<BalanceResponse>,
-  'getAllowances' : () => Promise<Array<[TokenIndex, Principal]>>,
+  'balanceOf' : (arg_0: Principal) => Promise<bigint>,
+  'getApproved' : (arg_0: TokenIndex) => Promise<Result_1>,
   'getCaller' : () => Promise<Principal>,
   'getMinter' : () => Promise<Principal>,
-  'getNFTsOfOwner' : () => Promise<Array<[TokenIndex, Principal]>>,
-  'getRegistry' : () => Promise<Array<[TokenIndex, AccountIdentifier__1]>>,
-  'getTokens' : () => Promise<Array<[TokenIndex, Array<number>]>>,
-  'metadata' : (arg_0: TokenIdentifier__1) => Promise<Result_2>,
-  'mintNFT' : (arg_0: Principal, arg_1: string) => Promise<TokenIndex>,
-  'ownerOf' : (arg_0: TokenIdentifier__1) => Promise<Result_1>,
+  'getNFTsOfOwner' : () => Promise<Result_2>,
+  'getOwners' : () => Promise<Array<[TokenIndex, Principal]>>,
+  'getTokens' : () => Promise<Array<[TokenIndex, TokenMetadata]>>,
+  'mintMovieNFT' : (arg_0: Principal, arg_1: TokenMetadata) => Promise<
+      TokenIndex
+    >,
+  'ownerOf' : (arg_0: TokenIndex) => Promise<Result_1>,
   'setMinter' : (arg_0: Principal) => Promise<undefined>,
-  'totalSupply' : (arg_0: TokenIdentifier__1) => Promise<Result>,
-  'transferFrom' : (arg_0: TransferRequest) => Promise<TransferResponse>,
+  'tokenOfOwnerByIndex' : (arg_0: Principal, arg_1: bigint) => Promise<
+      [] | [TokenIndex]
+    >,
+  'totalSupply' : () => Promise<Result>,
+  'transferFrom' : (
+      arg_0: Principal,
+      arg_1: Principal,
+      arg_2: TokenIndex,
+    ) => Promise<undefined>,
 }
 export interface _SERVICE extends movieNFT {}

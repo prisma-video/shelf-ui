@@ -82,35 +82,41 @@ const MovieContextProvider = ({ children }) => {
   };
   const getMoviesRequest = async () => {
     const data = await listNFTs();
-    console.log("CALL 1");
-    
-    if (data[1] && data[1].length) {
-      dispatch({ type: 'GET_MOVIES_SUCCESS', payload: data[1] });
+    const movieIds = data.map(x => x[1].properties.internal_id);
+    console.log("CALL 1", data[1][1]);
+    console.log("CALL 1.1", movieIds);
+
+    const movieData = await fetch("../DB/mockup.json")
+      .then(response => response.json())
+      .filter(({id}) => movieIds.includes(id));
+    console.log("CALL 1.2", movieData);
+        
+    if (data && data.length) {
+      dispatch({ type: 'GET_MOVIES_SUCCESS', payload: data });
     } else {
-      dispatch({ type: 'GET_MOVIES_ERROR', payload: result.error });
+      dispatch({ type: 'GET_MOVIES_ERROR', payload: data });
     }
   };
+
   const getMyMoviesRequest = async () => {
     const data = await listMyNFTs();
     console.log("CALL 2");
-    dispatch({ type: 'GET_MY_MOVIES_SUCCESS', payload: data[1] });
-    // const result = await API.graphql(graphqlOperation(GET_MOVIES));
-
-    // if (result.data.listMovies.items && result.data.listMovies.items.length) {
-    //   dispatch({ type: 'GET_MOVIES_SUCCESS', payload: result.data.listMovies.items });
-    // } else {
-    //   dispatch({ type: 'GET_MOVIES_ERROR', payload: result.error });
-    // }
+    if (data && data.length) {
+      dispatch({ type: 'GET_MY_MOVIES_SUCCESS', payload: data });
+    } else {
+      dispatch({ type: 'GET_MY_MOVIES_ERROR', payload: data });
+    }
   };
-  const getMovieByIdRequest = async (inputVariables) => {
-    // const result = await API.graphql(graphqlOperation(GET_MOVIE_BY_ID, inputVariables));
+  
+  // const getMovieByIdRequest = async (inputVariables) => {
+  //   // const result = await API.graphql(graphqlOperation(GET_MOVIE_BY_ID, inputVariables));
     
-    // if (result.data && result.data.getJob.id) {
-    //   dispatch({ type: 'GET_MOVIE_SUCCESS', payload: result.data.getJob });
-    // } else {
-    //   dispatch({ type: 'GET_MOVIE_ERROR', payload: result.error });
-    // }
-  };
+  //   // if (result.data && result.data.getJob.id) {
+  //   //   dispatch({ type: 'GET_MOVIE_SUCCESS', payload: result.data.getJob });
+  //   // } else {
+  //   //   dispatch({ type: 'GET_MOVIE_ERROR', payload: result.error });
+  //   // }
+  // };
 
   React.useEffect(() => {
     getMovieCategoryRequest();
@@ -120,7 +126,7 @@ const MovieContextProvider = ({ children }) => {
 
   return (
     <MoviesContext.Provider
-      value={{ ...value, dispatch, getMovieCategoryRequest, getMoviesRequest, getMyMoviesRequest, getMovieByIdRequest }}
+      value={{ ...value, dispatch, getMovieCategoryRequest, getMoviesRequest, getMyMoviesRequest }}
     >
       {children}
     </MoviesContext.Provider>

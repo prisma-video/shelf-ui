@@ -5,10 +5,6 @@ export * from "./nft";
 
 export const KEY_LOCALSTORAGE_USER = `ic-shelf-user`;
 
-export const MAX_CHUNK_SIZE = 1024 * 500; // 500kb
-export const REWARDS_CHECK_INTERVAL = 10000;
-export const hashtagRegExp = /(?:\s|^)#[A-Za-z0-9\-._]+(?:\s|$)/gim;
-
 export const encodeArrayBuffer = (file) =>
   Array.from(new Uint8Array(file));
 
