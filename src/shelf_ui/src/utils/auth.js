@@ -1,4 +1,6 @@
-import { user } from "../../../declarations/user/index";
+import { user, idlFactory } from "../../../declarations/user/index";
+
+export const baseProfile= idlFactory.UserProfile;
 
 export async function getUserProfile() {
   const appUser = await user.getUserProfile();

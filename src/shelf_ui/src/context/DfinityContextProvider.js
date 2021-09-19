@@ -8,18 +8,20 @@ import {
   getUserProfile,
   createNewUser,
   updateUserProfile,
+  baseProfile,
   KEY_LOCALSTORAGE_USER,
 } from "../utils/index";
 
+export const defaultProfile = baseProfile;
 
-export const defaultProfile = {
-  userName: undefined,
-  firstName: undefined,
-  lastName: undefined,
-  emailAddress: undefined,
-  doubleOptIn: false,
-  communities: [],
-};
+// export const defaultProfile = {
+//   userName: undefined,
+//   firstName: undefined,
+//   lastName: undefined,
+//   emailAddress: undefined,
+//   doubleOptIn: false,
+//   communities: [],
+// };
 
 // Provider hook that creates auth object and handles state
 export function useProvideAuth(authClient) {
