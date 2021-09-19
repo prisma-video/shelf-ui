@@ -31,9 +31,13 @@ shared({ caller = initializer }) actor class user() = this {
     };
 
     // User & Profile functions
-    public shared(msg) func createNewUser() : async () {
-        _userDatabase.put(msg.caller, {userName=null; emailAddress=null; doubleOptIn =true; communities=null});
+    public shared(msg) func createNewUser(profile: UserProfile) : async () {
+        _userDatabase.put(msg.caller, profile);
         _roles.put(msg.caller, #guest);
+    };
+
+    public shared(msg) func updateUserProfile(profile: UserProfile) : async () {
+        _userDatabase.put(msg.caller, profile);
     };
 
     func getProfile(user: Principal) : ?UserProfile {

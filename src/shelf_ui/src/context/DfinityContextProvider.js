@@ -7,9 +7,19 @@ import {
   getUserFromStorage,
   getUserProfile,
   createNewUser,
+  updateUserProfile,
   KEY_LOCALSTORAGE_USER,
 } from "../utils/index";
 
+
+export const defaultProfile = {
+  userName: undefined,
+  firstName: undefined,
+  lastName: undefined,
+  emailAddress: undefined,
+  doubleOptIn: false,
+  communities: [],
+};
 
 // Provider hook that creates auth object and handles state
 export function useProvideAuth(authClient) {
@@ -106,22 +116,27 @@ export function useProvideAuth(authClient) {
     if (identity) {
       setIsAuthenticatedLocal(true);
       _setIdentity(identity);
-      logInApp();
+      getUserDetails();
     } else {
       console.error("Could not get identity from identity provider");
     }
   };
 
   // Login to the App
-  const logInApp = async function () {
-    const _userProfile = getUserProfile();
-    if(_userProfile.emailAddress) {
-      _setUserProfile(_userProfile);
+  const getUserDetails = async function () {
+    const _userProfile = await getUserProfile();
+    if(_userProfile) {
+      _setUserProfile(_userProfile[0]);
     } else {
       // registering new user in the DB
-      createNewUser();
-      _setUserProfile({"lol": "NTM FDP"})
+      await createNewUser(defaultProfile);
+      _setUserProfile(defaultProfile);
     }
+    console.log('CALLING');
+  };
+
+  const updateUserDetails = async function (newUserData) {
+    await updateUserProfile(newUserData ? newUserData : defaultProfile);
   };
 
   // Clears the authClient of any cached data, and redirects user to root.
@@ -141,6 +156,8 @@ export function useProvideAuth(authClient) {
     user,
     identity,
     setUser,
+    getUserDetails,
+    updateUserDetails,
     userProfile,
   };
 }
@@ -154,7 +171,9 @@ const dfinityAuthContext = createContext({
     logOut: () => {},
     user: undefined,
     setUser: () => {},
-    userProfile: undefined,
+    getUserDetails: () => {},
+    updateUserDetails: () => {},
+    userProfile: defaultProfile,
   });
 
 export function DfinityAuth({ children }) {

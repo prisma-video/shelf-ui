@@ -10,12 +10,15 @@ export const idlFactory = ({ IDL }) => {
     'communities' : IDL.Opt(IDL.Vec(IDL.Text)),
     'doubleOptIn' : IDL.Bool,
     'emailAddress' : IDL.Opt(IDL.Text),
+    'lastName' : IDL.Opt(IDL.Text),
+    'firstName' : IDL.Opt(IDL.Text),
   });
   const user = IDL.Service({
     'assign_role' : IDL.Func([IDL.Principal, Role], [], []),
-    'createNewUser' : IDL.Func([], [], []),
+    'createNewUser' : IDL.Func([UserProfile], [], []),
     'getUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], []),
     'getUserRole' : IDL.Func([], [IDL.Opt(Role)], []),
+    'updateUserProfile' : IDL.Func([UserProfile], [], []),
   });
   return user;
 };

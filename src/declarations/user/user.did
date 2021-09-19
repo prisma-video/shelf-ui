@@ -1,15 +1,18 @@
 type user = 
  service {
    assign_role: (principal, Role) -> ();
-   createNewUser: () -> ();
+   createNewUser: (UserProfile) -> ();
    getUserProfile: () -> (opt UserProfile);
    getUserRole: () -> (opt Role);
+   updateUserProfile: (UserProfile) -> ();
  };
 type UserProfile = 
  record {
    communities: opt vec text;
    doubleOptIn: bool;
    emailAddress: opt text;
+   firstName: opt text;
+   lastName: opt text;
    userName: opt text;
  };
 type Role = 

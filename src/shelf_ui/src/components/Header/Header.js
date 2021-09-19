@@ -8,7 +8,6 @@ const Header = () => {
 
     const handleLogout = async () => {
         await auth.logOut();
-        console.log(auth);
         history.push("/");
     };
 
@@ -22,26 +21,28 @@ const Header = () => {
                         <img src="/img/logo.svg" alt="" className="header__logo" />
                         </Link>
                         <ul className="header__nav">
-                        <li className="header__nav-item">
-                            <Link to="/"className="header__nav-link" >Home</Link>
-                        </li>
 
                         {auth.isAuthenticated ?
                         <>
                         <li className="header__nav-item">
-                            <Link to="/catalog" className="header__nav-link">Discover</Link>
+                            <Link to="/" className="header__nav-link">Discover</Link>
                         </li>
                         <li className="header__nav-item">
-                            <Link to="/catalog" className="header__nav-link">Community</Link>
+                            <Link to="/" className="header__nav-link">Community</Link>
                         </li>
                         <li className="header__nav-item">
                             <Link to="/myshelf" className="header__nav-link">My Shelf</Link>
                         </li>
                         </>
                         :
+                        <>
+                        <li className="header__nav-item">
+                            <Link to="/pricing" className="header__nav-link">Pricing plan</Link>
+                        </li>
                         <li className="header__nav-item">
                             <Link to="/contact" className="header__nav-link">Contact</Link>
                         </li>
+                        </>
                         }
                         </ul>
                         
@@ -61,10 +62,16 @@ const Header = () => {
                                 <i className="icon ion-ios-search"></i>
                             </button>
                             {auth.isAuthenticated ?
-                            <button onClick={handleLogout} className="header__sign-in">
-                                <i className="icon ion-ios-log-in"></i>
-                                <span>sign out</span>
+                            <>
+                            <div className="sidebar__user-img">
+                                <Link to="/profile">
+                                <img src="img/user.svg" alt="" />
+                                </Link>
+                            </div>
+                            <button className="sidebar__user-btn" type="button" onClick={handleLogout} >
+                                <i className="icon ion-ios-log-out"></i>
                             </button>
+                            </>
                             :
                             <Link to="/singin" className="header__sign-in">
                                 <i className="icon ion-ios-log-in"></i>

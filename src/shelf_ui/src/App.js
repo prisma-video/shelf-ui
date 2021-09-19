@@ -6,7 +6,7 @@ import GlobalContext from './context/GlobalContext';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
-import MainView from './containers/MainView';
+import ProfileView from './containers/ProfileView';
 import SignInView from './containers/SignInView';
 import CatalogView from './containers/CatalogView';
 import MovieView from './containers/MovieView';
@@ -29,9 +29,10 @@ function App() {
       <Switch>
         <Route path ="/movie/:id" component={MovieView} />
         <Route path ="/singin" component={SignInView} />
-        <Route path ="/catalog" component={() => <CatalogView myshelf={false} />} />
-        <Route path ="/myshelf" component={() => <CatalogView myshelf={true} />} />
-        <Route exact path ="/" component={MainView} />
+        <Route path ="/profile" component={ProfileView} />
+        <Route path ="/pricing" component={() => <CatalogView mode={"pricing"} />} />
+        <Route path ="/myshelf" component={() => <CatalogView mode={"myshelf"} />} />
+        <Route exact path ="/" component={() => <CatalogView mode={"catalog"} />} />
       </Switch>
       <Footer />
     </GlobalContext>

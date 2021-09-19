@@ -6,6 +6,8 @@ module {
 
     public type UserProfile = {
         userName: ?Text;
+        firstName: ?Text;
+        lastName: ?Text;
         emailAddress: ?Text;
         doubleOptIn: Bool;
         communities: ?[Text];

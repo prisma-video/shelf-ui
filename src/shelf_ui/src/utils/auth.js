@@ -9,8 +9,17 @@ export async function getUserProfile() {
   }
 }
 
-export async function createNewUser() {
-  const appUser = await user.createNewUser();
+export async function createNewUser(data) {
+  const appUser = await user.createNewUser(data);
+  if (appUser) {
+    return appUser;
+  } else {
+    return null;
+  }
+}
+
+export async function updateUserProfile(data) {
+  const appUser = await user.updateUserProfile(data);
   if (appUser) {
     return appUser;
   } else {
