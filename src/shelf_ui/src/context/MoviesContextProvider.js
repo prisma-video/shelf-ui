@@ -87,7 +87,7 @@ const MovieContextProvider = ({ children }) => {
 
     const movieData = require("../mockup");
     const movieData1 = movieData.filter(movie => movieIds.includes(movie.id));
-        
+    
     if (movieData1 && movieData1.length) {
       dispatch({ type: 'GET_MOVIES_SUCCESS', payload: movieData1 });
     } else {
@@ -97,11 +97,16 @@ const MovieContextProvider = ({ children }) => {
 
   const getMyMoviesRequest = async () => {
     const data = await listMyNFTs();
-    console.log("CALL 2");
-    if (data && data.length) {
-      dispatch({ type: 'GET_MY_MOVIES_SUCCESS', payload: data });
+    const movieIds = data.map(x => parseInt(x[1].properties.internal_id));
+    console.log("CALL 2", data, movieIds);
+
+    const movieData = require("../mockup");
+    const movieData1 = movieData.filter(movie => movieIds.includes(movie.id));
+
+    if (movieData1 && movieData1.length) {
+      dispatch({ type: 'GET_MY_MOVIES_SUCCESS', payload: movieData1 });
     } else {
-      dispatch({ type: 'GET_MY_MOVIES_ERROR', payload: data });
+      dispatch({ type: 'GET_MY_MOVIES_ERROR', payload: movieData1 });
     }
   };
   
@@ -114,8 +119,7 @@ const MovieContextProvider = ({ children }) => {
     const nfts = data.filter(nft => parseInt(nft[1].properties.internal_id) == id);
     
     const data2 = await listMyNFTs();
-    const nfts2 = [];
-    if(data2.length > 0) data2.filter(nft => parseInt(nft[1].properties.internal_id) == id);
+    const nfts2 = data2.filter(nft => parseInt(nft[1].properties.internal_id) == id);
     
     if (movieData1 && movieData1.length) {
       dispatch({ type: 'GET_MOVIE_SUCCESS', payload: {nfts: nfts, my_nfts: nfts2, ...movieData1[0]}});
@@ -134,7 +138,7 @@ const MovieContextProvider = ({ children }) => {
   React.useEffect(() => {
     getMovieCategoryRequest();
     getMoviesRequest();
-    console.log('DB CALL');
+    // console.log('DB CALL');
   }, []);
 
   return (

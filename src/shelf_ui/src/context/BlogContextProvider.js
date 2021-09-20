@@ -141,7 +141,7 @@ const BlogContextProvider = ({ children }) => {
 
   React.useEffect(() => {
     getPostsRequest();
-    console.log('DB CALL');
+    // console.log('DB CALL');
   }, []);
 
   return (

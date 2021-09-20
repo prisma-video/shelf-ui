@@ -34,4 +34,10 @@ module {
       previous_metadata : Text;
     };
   };
+
+  public type UpdateOwnedTokenTypes = {
+    #Add;
+    #Remove;
+  };
+
 }

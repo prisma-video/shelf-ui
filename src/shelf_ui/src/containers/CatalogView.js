@@ -11,8 +11,8 @@ const Main = ({ mode }) => {
     const auth = useDfinityAuth();
 
 	useEffect(() => {
-        if(mode=="myshelf") getMyMoviesRequest()
-        else if (mode=="catalog") getMoviesRequest();
+        if(mode=="myshelf") {getMyMoviesRequest()}
+        else if (mode=="catalog") {getMoviesRequest()}
 	}, []);
 
     

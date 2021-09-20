@@ -2,14 +2,11 @@ import type { Principal } from '@dfinity/principal';
 export type Balance = bigint;
 export type CommonError = { 'InvalidToken' : TokenIndex__1 } |
   { 'Other' : string };
-export type List = [] | [[TokenIndex, List]];
 export type Result = { 'ok' : Balance } |
   { 'err' : CommonError };
 export type Result_1 = { 'ok' : Principal } |
   { 'err' : CommonError };
 export type Result_2 = { 'ok' : Array<TokenIndex> } |
-  { 'err' : CommonError };
-export type Result_3 = { 'ok' : Array<[TokenIndex, TokenMetadata]> } |
   { 'err' : CommonError };
 export type TokenIndex = number;
 export type TokenIndex__1 = number;
@@ -25,6 +22,8 @@ export interface TokenMetadata {
     'metadata_version' : bigint,
   },
 }
+export type UpdateOwnedTokenTypes = { 'Add' : null } |
+  { 'Remove' : null };
 export interface _SERVICE {
   '_exists' : (arg_0: TokenIndex) => Promise<boolean>,
   '_isApprovedOrOwner' : (arg_0: Principal, arg_1: TokenIndex) => Promise<
@@ -36,6 +35,11 @@ export interface _SERVICE {
       arg_2: TokenIndex,
     ) => Promise<undefined>,
   '_updateBalance' : (arg_0: Principal, arg_1: bigint) => Promise<Result>,
+  '_updateOwnedTokens' : (
+      arg_0: Principal,
+      arg_1: TokenIndex,
+      arg_2: UpdateOwnedTokenTypes,
+    ) => Promise<undefined>,
   'acceptCycles' : () => Promise<undefined>,
   'availableCycles' : () => Promise<bigint>,
   'balanceOf' : (arg_0: Principal) => Promise<bigint>,
@@ -43,19 +47,16 @@ export interface _SERVICE {
   'getCaller' : () => Promise<string>,
   'getMinter' : () => Promise<Principal>,
   'getNFT' : (arg_0: TokenIndex) => Promise<[] | [Principal]>,
-  'getNFTsOfOwner' : () => Promise<Result_3>,
-  'getNFTsOfOwner2' : () => Promise<Result_2>,
+  'getNFTsOfOwner' : () => Promise<Array<[TokenIndex, TokenMetadata]>>,
+  'getNFTsOfOwner3' : (arg_0: Principal) => Promise<Result_2>,
   'getOwners' : () => Promise<Array<[TokenIndex, Principal]>>,
-  'getOwnerships' : () => Promise<Array<[Principal, List]>>,
+  'getOwnerships' : () => Promise<Array<[Principal, Array<TokenIndex>]>>,
   'getTokens' : () => Promise<Array<[TokenIndex, TokenMetadata]>>,
   'mintMovieNFT' : (arg_0: Principal, arg_1: TokenMetadata) => Promise<
       TokenIndex
     >,
   'ownerOf' : (arg_0: TokenIndex) => Promise<Result_1>,
   'setMinter' : (arg_0: Principal) => Promise<undefined>,
-  'tokenOfOwnerByIndex' : (arg_0: Principal, arg_1: bigint) => Promise<
-      [] | [TokenIndex]
-    >,
   'totalSupply' : () => Promise<Result>,
   'transferFrom' : (
       arg_0: Principal,

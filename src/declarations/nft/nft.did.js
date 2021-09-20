@@ -1,5 +1,4 @@
 export const idlFactory = ({ IDL }) => {
-  const List = IDL.Rec();
   const TokenIndex = IDL.Nat32;
   const Balance = IDL.Nat;
   const TokenIndex__1 = IDL.Nat32;
@@ -8,6 +7,10 @@ export const idlFactory = ({ IDL }) => {
     'Other' : IDL.Text,
   });
   const Result = IDL.Variant({ 'ok' : Balance, 'err' : CommonError });
+  const UpdateOwnedTokenTypes = IDL.Variant({
+    'Add' : IDL.Null,
+    'Remove' : IDL.Null,
+  });
   const Result_1 = IDL.Variant({ 'ok' : IDL.Principal, 'err' : CommonError });
   const TokenMetadata = IDL.Record({
     'name' : IDL.Text,
@@ -21,15 +24,10 @@ export const idlFactory = ({ IDL }) => {
       'metadata_version' : IDL.Nat,
     }),
   });
-  const Result_3 = IDL.Variant({
-    'ok' : IDL.Vec(IDL.Tuple(TokenIndex, TokenMetadata)),
-    'err' : CommonError,
-  });
   const Result_2 = IDL.Variant({
     'ok' : IDL.Vec(TokenIndex),
     'err' : CommonError,
   });
-  List.fill(IDL.Opt(IDL.Tuple(TokenIndex, List)));
   return IDL.Service({
     '_exists' : IDL.Func([TokenIndex], [IDL.Bool], []),
     '_isApprovedOrOwner' : IDL.Func(
@@ -39,6 +37,11 @@ export const idlFactory = ({ IDL }) => {
       ),
     '_transfer' : IDL.Func([IDL.Principal, IDL.Principal, TokenIndex], [], []),
     '_updateBalance' : IDL.Func([IDL.Principal, IDL.Int], [Result], []),
+    '_updateOwnedTokens' : IDL.Func(
+        [IDL.Principal, TokenIndex, UpdateOwnedTokenTypes],
+        [],
+        [],
+      ),
     'acceptCycles' : IDL.Func([], [], []),
     'availableCycles' : IDL.Func([], [IDL.Nat], ['query']),
     'balanceOf' : IDL.Func([IDL.Principal], [IDL.Nat], ['query']),
@@ -46,8 +49,12 @@ export const idlFactory = ({ IDL }) => {
     'getCaller' : IDL.Func([], [IDL.Text], ['query']),
     'getMinter' : IDL.Func([], [IDL.Principal], ['query']),
     'getNFT' : IDL.Func([TokenIndex], [IDL.Opt(IDL.Principal)], ['query']),
-    'getNFTsOfOwner' : IDL.Func([], [Result_3], ['query']),
-    'getNFTsOfOwner2' : IDL.Func([], [Result_2], ['query']),
+    'getNFTsOfOwner' : IDL.Func(
+        [],
+        [IDL.Vec(IDL.Tuple(TokenIndex, TokenMetadata))],
+        ['query'],
+      ),
+    'getNFTsOfOwner3' : IDL.Func([IDL.Principal], [Result_2], ['query']),
     'getOwners' : IDL.Func(
         [],
         [IDL.Vec(IDL.Tuple(TokenIndex, IDL.Principal))],
@@ -55,7 +62,7 @@ export const idlFactory = ({ IDL }) => {
       ),
     'getOwnerships' : IDL.Func(
         [],
-        [IDL.Vec(IDL.Tuple(IDL.Principal, List))],
+        [IDL.Vec(IDL.Tuple(IDL.Principal, IDL.Vec(TokenIndex)))],
         ['query'],
       ),
     'getTokens' : IDL.Func(
@@ -66,11 +73,6 @@ export const idlFactory = ({ IDL }) => {
     'mintMovieNFT' : IDL.Func([IDL.Principal, TokenMetadata], [TokenIndex], []),
     'ownerOf' : IDL.Func([TokenIndex], [Result_1], ['query']),
     'setMinter' : IDL.Func([IDL.Principal], [], []),
-    'tokenOfOwnerByIndex' : IDL.Func(
-        [IDL.Principal, IDL.Nat],
-        [IDL.Opt(TokenIndex)],
-        ['query'],
-      ),
     'totalSupply' : IDL.Func([], [Result], ['query']),
     'transferFrom' : IDL.Func(
         [IDL.Principal, IDL.Principal, TokenIndex],

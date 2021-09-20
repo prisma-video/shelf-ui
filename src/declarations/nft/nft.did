@@ -1,3 +1,8 @@
+type UpdateOwnedTokenTypes = 
+ variant {
+   Add;
+   Remove;
+ };
 type TokenMetadata = 
  record {
    description: text;
@@ -14,14 +19,6 @@ type TokenMetadata =
  };
 type TokenIndex__1 = nat32;
 type TokenIndex = nat32;
-type Result_3 = 
- variant {
-   err: CommonError;
-   ok: vec record {
-             TokenIndex;
-             TokenMetadata;
-           };
- };
 type Result_2 = 
  variant {
    err: CommonError;
@@ -37,11 +34,6 @@ type Result =
    err: CommonError;
    ok: Balance;
  };
-type List = 
- opt record {
-       TokenIndex;
-       List;
-     };
 type CommonError = 
  variant {
    InvalidToken: TokenIndex__1;
@@ -53,6 +45,7 @@ service : {
   _isApprovedOrOwner: (principal, TokenIndex) -> (bool);
   _transfer: (principal, principal, TokenIndex) -> ();
   _updateBalance: (principal, int) -> (Result);
+  _updateOwnedTokens: (principal, TokenIndex, UpdateOwnedTokenTypes) -> ();
   acceptCycles: () -> ();
   availableCycles: () -> (nat) query;
   balanceOf: (principal) -> (nat) query;
@@ -60,15 +53,18 @@ service : {
   getCaller: () -> (text) query;
   getMinter: () -> (principal) query;
   getNFT: (TokenIndex) -> (opt principal) query;
-  getNFTsOfOwner: () -> (Result_3) query;
-  getNFTsOfOwner2: () -> (Result_2) query;
+  getNFTsOfOwner: () -> (vec record {
+                               TokenIndex;
+                               TokenMetadata;
+                             }) query;
+  getNFTsOfOwner3: (principal) -> (Result_2) query;
   getOwners: () -> (vec record {
                           TokenIndex;
                           principal;
                         }) query;
   getOwnerships: () -> (vec record {
                               principal;
-                              List;
+                              vec TokenIndex;
                             }) query;
   getTokens: () -> (vec record {
                           TokenIndex;
@@ -77,7 +73,6 @@ service : {
   mintMovieNFT: (principal, TokenMetadata) -> (TokenIndex);
   ownerOf: (TokenIndex) -> (Result_1) query;
   setMinter: (principal) -> ();
-  tokenOfOwnerByIndex: (principal, nat) -> (opt TokenIndex) query;
   totalSupply: () -> (Result) query;
   transferFrom: (principal, principal, TokenIndex) -> ();
 }

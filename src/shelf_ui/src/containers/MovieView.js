@@ -1,36 +1,37 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { MoviesContext } from '../context/MoviesContextProvider';
 import MovieCard from '../components/MovieList/MovieCard';
 
-import { isOwnedOrReservable, makeOffer, executeSalesOrder, requestReservation, getCaller, getOwnerships } from "../utils/index";
+import { isOwnedOrReservable, makeOffer, executeSalesOrder, requestReservation } from "../utils/index";
 
 import Plyr from 'plyr-react'
 import './plyr.css'
 
+const cardColor = (score) => {
+    if(score >=7.5) return 'green';
+    else if(score >=6) return 'yellow';
+    else return 'red';
+};
+
 const MovieView = () => {
 	const { movies, movie_data, getMovieByIdRequest } = useContext(MoviesContext);
 	let { id } = useParams();
-	const defValWatchable = movie_data.my_nfts != undefined && movie_data.my_nfts.length >0 ? true : false;
-	console.log( movie_data.my_nfts, defValWatchable);
-	const [isWatchable, setIsWatchable] = useState(defValWatchable);
 
 	useEffect(() => {
         getMovieByIdRequest(id);
 	}, []);
-
-	useEffect( async() => {
-		console.log("yolo", (await getOwnerships()));
-	}, []);
 	
 	const acquireNFT = async () => {
-		console.log((await getCaller()));
+		console.log("Checking reservations");
 		if (await isOwnedOrReservable(movie_data.nfts[0][0])) {
+			console.log("Making offer");
 			const orderId = await makeOffer({nft: movie_data.nfts[0][0], purchasePrice: 100});
+			console.log("Executing sales order");
 			const executionOutcome = await executeSalesOrder(orderId);
 			console.log(movie_data.nfts[0][0], orderId, executionOutcome);
+			console.log("Placing reservation with: ", movie_data.nfts[0][0], orderId, executionOutcome);
 			await requestReservation(movie_data.nfts[0][0]);
-			setIsWatchable(true);
 		} else {
 			console.log("not reservable");
 		}
@@ -66,7 +67,7 @@ const MovieView = () => {
 							<div className="col-12 col-sm-5 col-md-4 col-lg-3 col-xl-5">
 								<div className="card__cover">
 									<img src={`/DB/${movie_data.title.replace(':', '-')}.jpeg`} alt="" />
-									<span className="card__rate card__rate--green">{movie_data.average_score}</span>
+									<span className={`card__rate card__rate--${cardColor(movie_data.vote_average)}`}>{movie_data.vote_average}</span>
 								</div>
 								<a href="http://www.youtube.com/watch?v=0O2aH4XLbto" className="card__trailer"><i className="icon ion-ios-play-circle"></i> Watch trailer</a>
 							</div>
@@ -90,9 +91,10 @@ const MovieView = () => {
 				
 				<div className="col-12 col-xl-6">
 					{
-					!isWatchable ?
+					// isWatchable === false ?
+					!(typeof(movie_data.my_nfts) == "object" && Object.keys(movie_data.my_nfts).length >0) ?
 					<>
-					<img src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg" onClick={acquireNFT} id="player" className="plyr" />
+					<img src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg" id="player" className="plyr" />
 					<span style={{color:"white"}}>You do not own a copy but there are <b style={{color:"darkred"}}>{movie_data.nfts.length} NFTs</b> available.
 					<a onClick={acquireNFT} className="header__sign-in"><i className="icon ion-ios-log-in"></i><span>Aquire NFT</span></a><button></button>
 					</span>

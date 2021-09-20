@@ -32,7 +32,9 @@ for n, row in enumerate(data):
     print(ret.stderr.decode())
 
     if n % 3 == 0:
-        command=f"dfx canister {network} call nft transferFrom '(principal \"mcnes-wkvkd-habbb-sctde-hwuhr-adhwb-y24aj-p2ppe-2bgva-sfvb2-5ae\", principal \"cfoi7-gxiji-l2v2o-wb3lo-dl4uy-cupdb-lybmy-elhx5-urscz-2oddr-jae\", {n})'"
+        print(f"transfer token {n}")
+        command=f"dfx canister {network} call nft transferFrom '(principal \"mcnes-wkvkd-habbb-sctde-hwuhr-adhwb-y24aj-p2ppe-2bgva-sfvb2-5ae\", principal \"2vxsx-fae\", {n})'"
+        print(command)
         ret = subprocess.run(command, capture_output=True, shell=True)
         print(ret.stdout.decode())
         print(ret.stderr.decode())

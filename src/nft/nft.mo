@@ -6,7 +6,7 @@ import Iter "mo:base/Iter";
 import Array "mo:base/Array";
 import Nat "mo:base/Nat";
 import Int "mo:base/Int";
-import List "mo:base/List";
+// import List "mo:base/List";
 import Bool "mo:base/Bool";
 
 import Types "./types";
@@ -19,6 +19,7 @@ actor movieNFT {
   type TokenIndex = Types.TokenIndex;
   type TokenMetadata = Types.TokenMetadata;
   type CommonError = Types.CommonError;
+  type UpdateOwnedTokenTypes = Types.UpdateOwnedTokenTypes;
 
   //State work
   private stable var _ownersState : [(TokenIndex, Principal)] = [];
@@ -30,8 +31,8 @@ actor movieNFT {
   private stable var _tokenApprovalsState : [(TokenIndex, Principal)] = [];
   private var _tokenApprovals : HashMap.HashMap<TokenIndex, Principal> = HashMap.fromIter(_tokenApprovalsState.vals(), 0, Types.TokenIndex.equal, Types.TokenIndex.hash);
 		
-	private stable var _ownedTokenState : [(Principal, List.List<TokenIndex>)] = [];
-  private var _ownedTokens : HashMap.HashMap<Principal, List.List<TokenIndex>> = HashMap.fromIter(_ownedTokenState.vals(), 0, Principal.equal, Principal.hash);
+	private stable var _ownedTokenState : [(Principal, [TokenIndex])] = [];
+  private var _ownedTokens : HashMap.HashMap<Principal, [TokenIndex]> = HashMap.fromIter(_ownedTokenState.vals(), 0, Principal.equal, Principal.hash);
   
 	private stable var _tokenMetadataState : [(TokenIndex, TokenMetadata)] = [];
   private var _tokenMetadata : HashMap.HashMap<TokenIndex, TokenMetadata> = HashMap.fromIter(_tokenMetadataState.vals(), 0, Types.TokenIndex.equal, Types.TokenIndex.hash);
@@ -89,26 +90,26 @@ actor movieNFT {
   // isApprovedForAll(owner, operator)
 
   // IERC721Enumerable
-  public query func tokenOfOwnerByIndex(owner : Principal, index : Nat) : async ?TokenIndex {
-    // assert(index < balanceOf(owner), "ERC721Enumerable: owner index out of bounds");
-    var balance : Nat = 0;
-    switch(_balances.get(owner)) {
-      case (?_balance) {
-				 balance := _balance;
-      };
-      case (_) {};
-    };
-    assert(Nat.lessOrEqual(index, balance));
-    assert(Nat.greater(balance, 0));
-    switch(_ownedTokens.get(owner)) {
-      case (?_tokens) {
-				return List.get<TokenIndex>(_tokens, index);
-      };
-      case (_) {
-        return null;
-      };
-    };
-  };
+  // public query func tokenOfOwnerByIndex(owner : Principal, index : Nat) : async ?TokenIndex {
+  //   // assert(index < balanceOf(owner), "ERC721Enumerable: owner index out of bounds");
+  //   var balance : Nat = 0;
+  //   switch(_balances.get(owner)) {
+  //     case (?_balance) {
+	// 			 balance := _balance;
+  //     };
+  //     case (_) {};
+  //   };
+  //   assert(Nat.lessOrEqual(index, balance));
+  //   assert(Nat.greater(balance, 0));
+  //   switch(_ownedTokens.get(owner)) {
+  //     case (?_tokens) {
+	// 			return List.get<TokenIndex>(_tokens, index);
+  //     };
+  //     case (_) {
+  //       return null;
+  //     };
+  //   };
+  // };
 
   public query func totalSupply() : async Result.Result<Balance, CommonError> {
     #ok(_supply);
@@ -140,14 +141,7 @@ actor movieNFT {
     // Update balances
     assert((await movieNFT._updateBalance(to, 1)) == #ok(1));
     // Update owned tokens
-    switch(_ownedTokens.get(to)) {
-      case (?_tokenList) {
-				_ownedTokens.put(to, List.push<TokenIndex>(token, _tokenList));
-      };
-      case (_) {
-        _ownedTokens.put(to, List.make<TokenIndex>(token));
-      };
-    };
+    await _updateOwnedTokens(to, token, #Add);
     // Update metadata
 		_tokenMetadata.put(token, _data);
 		_supply := _supply + 1;
@@ -202,21 +196,9 @@ actor movieNFT {
 
     _owners.put(token, to);
     // Update _ownedTokens of seller
-    switch(_ownedTokens.get(from)) {
-      case (?_tokenList) {
-				_ownedTokens.put(to, List.filter<TokenIndex>(_tokenList, func(t) { Types.TokenIndex.equal(t, token) == false } ));
-      };
-      case (_) {};
-    };
+    await _updateOwnedTokens(from, token, #Remove);
     // Update _ownedTokens of buyer
-    switch(_ownedTokens.get(to)) {
-      case (?_tokenList) {
-				_ownedTokens.put(to, List.push<TokenIndex>(token, _tokenList));
-      };
-      case (_) {
-        _ownedTokens.put(to, List.make<TokenIndex>(token));
-      };
-    };
+    await _updateOwnedTokens(to, token, #Add);
   };
 
 
@@ -250,12 +232,31 @@ actor movieNFT {
       };
     };
   };
-  
+
+  public shared func _updateOwnedTokens(user : Principal, token: TokenIndex, mode: UpdateOwnedTokenTypes) : async () {
+      switch(_ownedTokens.get(user)) {
+      case (?_tokenList) {
+        if(mode == #Add) {
+          _ownedTokens.put(user, Array.append<TokenIndex>([token], _tokenList));
+        } else {
+          _ownedTokens.put(user, Array.filter<TokenIndex>(_tokenList, func(t) { return (Types.TokenIndex.equal(t, token) == false) } ));
+        };
+      };
+      case (_) {
+        if(mode == #Add) {
+          _ownedTokens.put(user, Array.make<TokenIndex>(token));
+        };
+      };
+    };
+  };
+
+  // Getters
+
   public query func getOwners() : async [(TokenIndex, Principal)] {
     Iter.toArray(_owners.entries());
   };
 
-  public query func getOwnerships() : async [(Principal, List.List<TokenIndex>)] {
+  public query func getOwnerships() : async [(Principal, [TokenIndex])] {
     Iter.toArray(_ownedTokens.entries());
   };
 
@@ -271,31 +272,29 @@ actor movieNFT {
     _owners.get(token);
   };
 
-  public query (msg) func getNFTsOfOwner() : async  Result.Result<[(TokenIndex, TokenMetadata)], CommonError> {
+  public query (msg) func getNFTsOfOwner() : async [(TokenIndex, TokenMetadata)] {
     var _tokens: [(TokenIndex, TokenMetadata)] = [];
     switch(_ownedTokens.get(msg.caller)) {
       case (?tokens) {
-        for (token in Iter.fromList<TokenIndex>(tokens)) {
+        for (token in Iter.fromArray<TokenIndex>(tokens)) {
           switch(_tokenMetadata.get(token)) {
             case (?metadata) {
-              _tokens := Array.append<(TokenIndex, TokenMetadata)>(_tokens, [(token, metadata)]);
+              _tokens:= Array.append<(TokenIndex, TokenMetadata)>(_tokens, [(token, metadata)]);
             };
             case(_) {};
           };
         };
-        return #ok(_tokens);
+        return _tokens;
       };
-      case (_) {
-				return #ok([]);
+      case (_) {return _tokens;}
       };
-    };
   };
 
-  public query (msg) func getNFTsOfOwner2() : async  Result.Result<[TokenIndex], CommonError> {
+  public query (msg) func getNFTsOfOwner3(user: Principal) : async  Result.Result<[TokenIndex], CommonError> {
     var _tokens: [(TokenIndex, TokenMetadata)] = [];
-    switch(_ownedTokens.get(msg.caller)) {
+    switch(_ownedTokens.get(user)) {
       case (?tokens) {
-        return #ok(List.toArray<TokenIndex>(tokens));
+        return #ok(tokens);
       };
       case (_) {
 				return #ok([]);
