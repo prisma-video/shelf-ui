@@ -8,20 +8,20 @@ import {
   getUserProfile,
   createNewUser,
   updateUserProfile,
-  baseProfile,
+  // baseProfile,
   KEY_LOCALSTORAGE_USER,
 } from "../utils/index";
 
-export const defaultProfile = baseProfile;
+// export const defaultProfile = baseProfile;
 
-// export const defaultProfile = {
-//   userName: undefined,
-//   firstName: undefined,
-//   lastName: undefined,
-//   emailAddress: undefined,
-//   doubleOptIn: false,
-//   communities: [],
-// };
+export const defaultProfile = {
+  userName: "test",
+  firstName: "test",
+  lastName: "test",
+  emailAddress: "test",
+  // doubleOptIn: "false",
+  // communities: [""],
+};
 
 // Provider hook that creates auth object and handles state
 export function useProvideAuth(authClient) {
@@ -126,15 +126,15 @@ export function useProvideAuth(authClient) {
 
   // Login to the App
   const getUserDetails = async function () {
+    console.log('CALLING');
     const _userProfile = await getUserProfile();
-    if(_userProfile) {
+    if(_userProfile[0] != undefined) {
       _setUserProfile(_userProfile[0]);
     } else {
       // registering new user in the DB
       await createNewUser(defaultProfile);
       _setUserProfile(defaultProfile);
     }
-    console.log('CALLING');
   };
 
   const updateUserDetails = async function (newUserData) {

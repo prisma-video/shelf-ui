@@ -5,12 +5,12 @@ import Principal "mo:base/Principal";
 module {
 
     public type UserProfile = {
-        userName: ?Text;
-        firstName: ?Text;
-        lastName: ?Text;
-        emailAddress: ?Text;
-        doubleOptIn: Bool;
-        communities: ?[Text];
+        userName: Text;
+        firstName: Text;
+        lastName: Text;
+        emailAddress: Text;
+        // doubleOptIn: Bool;
+        // communities: ?[Text];
     };
 
     public type Role = {

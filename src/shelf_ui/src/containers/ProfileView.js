@@ -7,8 +7,8 @@ const ProfileView = () => {
     const auth = useDfinityAuth();
     const inputRef = useRef({});
 
-	useEffect(() => {
-        auth.getUserDetails();
+	useEffect(async () => {
+        await auth.getUserDetails();
 	}, []); //userProfile
 
     const handleProfileUpdate = async () => {
@@ -21,7 +21,6 @@ const ProfileView = () => {
         await auth.updateUserDetails(tmpValues);
     }
 
-    console.log(auth.userProfile);
     if(!auth.userProfile) return "loading..."
 
     return (

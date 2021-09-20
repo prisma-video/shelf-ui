@@ -6,12 +6,10 @@ export const idlFactory = ({ IDL }) => {
     'ambassador' : IDL.Null,
   });
   const UserProfile = IDL.Record({
-    'userName' : IDL.Opt(IDL.Text),
-    'communities' : IDL.Opt(IDL.Vec(IDL.Text)),
-    'doubleOptIn' : IDL.Bool,
-    'emailAddress' : IDL.Opt(IDL.Text),
-    'lastName' : IDL.Opt(IDL.Text),
-    'firstName' : IDL.Opt(IDL.Text),
+    'userName' : IDL.Text,
+    'emailAddress' : IDL.Text,
+    'lastName' : IDL.Text,
+    'firstName' : IDL.Text,
   });
   return IDL.Service({
     'assign_role' : IDL.Func([IDL.Principal, Role], [], []),

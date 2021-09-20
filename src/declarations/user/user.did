@@ -1,11 +1,9 @@
 type UserProfile = 
  record {
-   communities: opt vec text;
-   doubleOptIn: bool;
-   emailAddress: opt text;
-   firstName: opt text;
-   lastName: opt text;
-   userName: opt text;
+   emailAddress: text;
+   firstName: text;
+   lastName: text;
+   userName: text;
  };
 type Role = 
  variant {

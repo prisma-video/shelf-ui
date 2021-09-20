@@ -4,12 +4,10 @@ export type Role = { 'admin' : null } |
   { 'guest' : null } |
   { 'ambassador' : null };
 export interface UserProfile {
-  'userName' : [] | [string],
-  'communities' : [] | [Array<string>],
-  'doubleOptIn' : boolean,
-  'emailAddress' : [] | [string],
-  'lastName' : [] | [string],
-  'firstName' : [] | [string],
+  'userName' : string,
+  'emailAddress' : string,
+  'lastName' : string,
+  'firstName' : string,
 }
 export interface _SERVICE {
   'assign_role' : (arg_0: Principal, arg_1: Role) => Promise<undefined>,

@@ -152,28 +152,6 @@
   },
   {
     "adult": false,
-    "backdrop_path": "/inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg",
-    "tags": [
-      "Action",
-      "Adventure",
-      "Science Fiction"
-    ],
-    "id": 399566,
-    "original_language": "en",
-    "original_title": "Godzilla vs. Kong",
-    "overview": "In a time when monsters walk the Earth, humanity’s fight for its future sets Godzilla and Kong on a collision course that will see the two most powerful forces of nature on the planet collide in a spectacular battle for the ages.",
-    "popularity": 1417.39,
-    "poster_path": "/pgqgaUx1cJb5oZQQ5v0tNARCeBp.jpg",
-    "release_date": "2021-03-24",
-    "title": "Godzilla vs. Kong",
-    "video": false,
-    "vote_average": 8.1,
-    "vote_count": 5792,
-    "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
-    "directors": ["Vince Gilligan"]
-  },
-  {
-    "adult": false,
     "backdrop_path": "/iDdpiUnCeXvBmrkBFpL6lKsZt33.jpg",
     "tags": [
       "Thriller",
@@ -370,29 +348,6 @@
     "video": false,
     "vote_average": 7.6,
     "vote_count": 148,
-    "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
-    "directors": ["Vince Gilligan"]
-  },
-  {
-    "adult": false,
-    "backdrop_path": "/rlNnwObbMu5G2FaOUlacnUIdIIA.jpg",
-    "tags": [
-      "Animation",
-      "Comedy",
-      "Family",
-      "Adventure"
-    ],
-    "id": 726684,
-    "original_language": "fr",
-    "original_title": "Miraculous World : Shanghai, la légende de Ladydragon",
-    "overview": "On school break, Marinette heads to Shanghai to meet Adrien. But after arriving, Marinette loses all her stuff, including the Miraculous that allows her to turn into Ladybug!",
-    "popularity": 1019.579,
-    "poster_path": "/msI5a9TPnepx47JUb2vl88hb80R.jpg",
-    "release_date": "2021-04-04",
-    "title": "Miraculous World: Shanghai – The Legend of Ladydragon",
-    "video": false,
-    "vote_average": 7.8,
-    "vote_count": 371,
     "cast": ["Brian Cranston", "Jesse Plemons", "Matt Jones", "Jonathan Banks", "Charles Baker"],
     "directors": ["Vince Gilligan"]
   },

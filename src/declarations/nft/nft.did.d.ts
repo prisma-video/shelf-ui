@@ -2,11 +2,14 @@ import type { Principal } from '@dfinity/principal';
 export type Balance = bigint;
 export type CommonError = { 'InvalidToken' : TokenIndex__1 } |
   { 'Other' : string };
+export type List = [] | [[TokenIndex, List]];
 export type Result = { 'ok' : Balance } |
   { 'err' : CommonError };
 export type Result_1 = { 'ok' : Principal } |
   { 'err' : CommonError };
-export type Result_2 = { 'ok' : Array<[TokenIndex, TokenMetadata]> } |
+export type Result_2 = { 'ok' : Array<TokenIndex> } |
+  { 'err' : CommonError };
+export type Result_3 = { 'ok' : Array<[TokenIndex, TokenMetadata]> } |
   { 'err' : CommonError };
 export type TokenIndex = number;
 export type TokenIndex__1 = number;
@@ -40,8 +43,10 @@ export interface _SERVICE {
   'getCaller' : () => Promise<string>,
   'getMinter' : () => Promise<Principal>,
   'getNFT' : (arg_0: TokenIndex) => Promise<[] | [Principal]>,
-  'getNFTsOfOwner' : () => Promise<Result_2>,
+  'getNFTsOfOwner' : () => Promise<Result_3>,
+  'getNFTsOfOwner2' : () => Promise<Result_2>,
   'getOwners' : () => Promise<Array<[TokenIndex, Principal]>>,
+  'getOwnerships' : () => Promise<Array<[Principal, List]>>,
   'getTokens' : () => Promise<Array<[TokenIndex, TokenMetadata]>>,
   'mintMovieNFT' : (arg_0: Principal, arg_1: TokenMetadata) => Promise<
       TokenIndex

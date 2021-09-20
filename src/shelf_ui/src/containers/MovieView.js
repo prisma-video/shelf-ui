@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { MoviesContext } from '../context/MoviesContextProvider';
 import MovieCard from '../components/MovieList/MovieCard';
 
-import { isOwnedOrReservable, makeOffer, executeSalesOrder, requestReservation, getCaller } from "../utils/index";
+import { isOwnedOrReservable, makeOffer, executeSalesOrder, requestReservation, getCaller, getOwnerships } from "../utils/index";
 
 import Plyr from 'plyr-react'
 import './plyr.css'
@@ -19,6 +19,10 @@ const MovieView = () => {
         getMovieByIdRequest(id);
 	}, []);
 
+	useEffect( async() => {
+		console.log("yolo", (await getOwnerships()));
+	}, []);
+	
 	const acquireNFT = async () => {
 		console.log((await getCaller()));
 		if (await isOwnedOrReservable(movie_data.nfts[0][0])) {

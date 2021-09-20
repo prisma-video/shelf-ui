@@ -14,13 +14,18 @@ type TokenMetadata =
  };
 type TokenIndex__1 = nat32;
 type TokenIndex = nat32;
-type Result_2 = 
+type Result_3 = 
  variant {
    err: CommonError;
    ok: vec record {
              TokenIndex;
              TokenMetadata;
            };
+ };
+type Result_2 = 
+ variant {
+   err: CommonError;
+   ok: vec TokenIndex;
  };
 type Result_1 = 
  variant {
@@ -32,6 +37,11 @@ type Result =
    err: CommonError;
    ok: Balance;
  };
+type List = 
+ opt record {
+       TokenIndex;
+       List;
+     };
 type CommonError = 
  variant {
    InvalidToken: TokenIndex__1;
@@ -50,11 +60,16 @@ service : {
   getCaller: () -> (text) query;
   getMinter: () -> (principal) query;
   getNFT: (TokenIndex) -> (opt principal) query;
-  getNFTsOfOwner: () -> (Result_2) query;
+  getNFTsOfOwner: () -> (Result_3) query;
+  getNFTsOfOwner2: () -> (Result_2) query;
   getOwners: () -> (vec record {
                           TokenIndex;
                           principal;
                         }) query;
+  getOwnerships: () -> (vec record {
+                              principal;
+                              List;
+                            }) query;
   getTokens: () -> (vec record {
                           TokenIndex;
                           TokenMetadata;

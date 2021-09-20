@@ -186,6 +186,7 @@ actor movieNFT {
     Bool.logor(isOwner, isApproved);
   };
 
+
   // TODO: private
   public func _transfer(from : Principal, to : Principal, token : TokenIndex) : async () {
     // Verify ownership
@@ -194,11 +195,28 @@ actor movieNFT {
     // Clear approvals from the previous owner
     // _approve(address(0), tokenId);
 
+    // private func testToken(t: TokenIndex, token: TokenIndex): Bool {Types.TokenIndex.equal(t, token)};
     // Update balances
     assert(Result.isOk(await movieNFT._updateBalance(from, -1)));
     assert(Result.isOk(await movieNFT._updateBalance(to, 1)));
 
     _owners.put(token, to);
+    // Update _ownedTokens of seller
+    switch(_ownedTokens.get(from)) {
+      case (?_tokenList) {
+				_ownedTokens.put(to, List.filter<TokenIndex>(_tokenList, func(t) { Types.TokenIndex.equal(t, token) == false } ));
+      };
+      case (_) {};
+    };
+    // Update _ownedTokens of buyer
+    switch(_ownedTokens.get(to)) {
+      case (?_tokenList) {
+				_ownedTokens.put(to, List.push<TokenIndex>(token, _tokenList));
+      };
+      case (_) {
+        _ownedTokens.put(to, List.make<TokenIndex>(token));
+      };
+    };
   };
 
 
@@ -237,6 +255,10 @@ actor movieNFT {
     Iter.toArray(_owners.entries());
   };
 
+  public query func getOwnerships() : async [(Principal, List.List<TokenIndex>)] {
+    Iter.toArray(_ownedTokens.entries());
+  };
+
   public query func getTokens() : async [(TokenIndex, TokenMetadata)] {
     Iter.toArray(_tokenMetadata.entries());
   };
@@ -262,6 +284,18 @@ actor movieNFT {
           };
         };
         return #ok(_tokens);
+      };
+      case (_) {
+				return #ok([]);
+      };
+    };
+  };
+
+  public query (msg) func getNFTsOfOwner2() : async  Result.Result<[TokenIndex], CommonError> {
+    var _tokens: [(TokenIndex, TokenMetadata)] = [];
+    switch(_ownedTokens.get(msg.caller)) {
+      case (?tokens) {
+        return #ok(List.toArray<TokenIndex>(tokens));
       };
       case (_) {
 				return #ok([]);

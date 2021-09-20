@@ -19,11 +19,10 @@
         "swap_contracts"
       ],
       "frontend": {
-        "entrypoint": "src/shelf_ui/public/index.html"
+        "entrypoint": "dist/index.html"
       },
       "source": [
-        "src/shelf_ui/assets",
-        "src/shelf_ui/src"
+        "dist/"
       ],
       "type": "assets"
     }
