@@ -7,7 +7,7 @@ import Iter "mo:base/Iter";
 
 import Types "./types";
 
-shared({ caller = initializer }) actor class user() = this {
+actor user {
 
     type UserProfile = Types.UserProfile;
     type Role = Types.Role;
@@ -58,8 +58,7 @@ shared({ caller = initializer }) actor class user() = this {
     };
 
     func has_permission(pal: Principal, perm : Permission) : Bool {
-        let role = getRole(pal);
-        switch (role, perm) {
+        switch (getRole(pal), perm) {
             case (?#admin, _) true;
             case (?#ambassador or ?#authorized, #access) true;
             case (_, _) false;
@@ -79,9 +78,6 @@ shared({ caller = initializer }) actor class user() = this {
 
         if (new_role == #admin) {
             throw Error.reject( "Cannot assign anyone to be the admin" );
-        };
-        if (assignee == initializer) {
-            throw Error.reject( "Cannot assign a role to the canister owner" );
         };
         _roles.put(assignee, new_role);
     };

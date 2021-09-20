@@ -166,6 +166,7 @@ module.exports = [{
       NODE_ENV: 'development',
       USER_CANISTER_ID: canisters["user"],
       NFT_CANISTER_ID: canisters["nft"],
+      SWAP_CONTRACTS_CANISTER_ID: canisters["swap_contracts"],
       SHELF_UI_CANISTER_ID: canisters["shelf_ui"]
     }),
     new webpack.ProvidePlugin({

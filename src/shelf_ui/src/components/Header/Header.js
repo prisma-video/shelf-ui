@@ -65,12 +65,17 @@ const Header = () => {
                             <>
                             <div className="sidebar__user-img">
                                 <Link to="/profile">
-                                <img src="img/user.svg" alt="" />
+                                <img src="/img/user.svg" alt="" />
                                 </Link>
                             </div>
-                            <button className="sidebar__user-btn" type="button" onClick={handleLogout} >
+                            {/* <button className="sidebar__user-btn" type="button" onClick={handleLogout} >
                                 <i className="icon ion-ios-log-out"></i>
-                            </button>
+                                <span>sign out</span>
+                            </button> */}
+                            <Link to="/singout" className="header__sign-in" onClick={handleLogout} >
+                                <i className="icon ion-ios-log-out"></i>
+                                <span>sign out</span>
+                            </Link>
                             </>
                             :
                             <Link to="/singin" className="header__sign-in">

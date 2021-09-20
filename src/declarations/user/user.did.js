@@ -13,13 +13,12 @@ export const idlFactory = ({ IDL }) => {
     'lastName' : IDL.Opt(IDL.Text),
     'firstName' : IDL.Opt(IDL.Text),
   });
-  const user = IDL.Service({
+  return IDL.Service({
     'assign_role' : IDL.Func([IDL.Principal, Role], [], []),
     'createNewUser' : IDL.Func([UserProfile], [], []),
     'getUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], []),
     'getUserRole' : IDL.Func([], [IDL.Opt(Role)], []),
     'updateUserProfile' : IDL.Func([UserProfile], [], []),
   });
-  return user;
 };
 export const init = ({ IDL }) => { return []; };

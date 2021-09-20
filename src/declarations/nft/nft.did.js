@@ -24,7 +24,7 @@ export const idlFactory = ({ IDL }) => {
     'ok' : IDL.Vec(IDL.Tuple(TokenIndex, TokenMetadata)),
     'err' : CommonError,
   });
-  const movieNFT = IDL.Service({
+  return IDL.Service({
     '_exists' : IDL.Func([TokenIndex], [IDL.Bool], []),
     '_isApprovedOrOwner' : IDL.Func(
         [IDL.Principal, TokenIndex],
@@ -37,8 +37,9 @@ export const idlFactory = ({ IDL }) => {
     'availableCycles' : IDL.Func([], [IDL.Nat], ['query']),
     'balanceOf' : IDL.Func([IDL.Principal], [IDL.Nat], ['query']),
     'getApproved' : IDL.Func([TokenIndex], [Result_1], []),
-    'getCaller' : IDL.Func([], [IDL.Principal], ['query']),
+    'getCaller' : IDL.Func([], [IDL.Text], ['query']),
     'getMinter' : IDL.Func([], [IDL.Principal], ['query']),
+    'getNFT' : IDL.Func([TokenIndex], [IDL.Opt(IDL.Principal)], ['query']),
     'getNFTsOfOwner' : IDL.Func([], [Result_2], ['query']),
     'getOwners' : IDL.Func(
         [],
@@ -65,6 +66,5 @@ export const idlFactory = ({ IDL }) => {
         [],
       ),
   });
-  return movieNFT;
 };
-export const init = ({ IDL }) => { return [IDL.Principal]; };
+export const init = ({ IDL }) => { return []; };

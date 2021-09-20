@@ -1,16 +1,16 @@
 import { Actor, HttpAgent } from "@dfinity/agent";
 
 // Imports and re-exports candid interface
-import { idlFactory } from './authprovider.did.js';
-export { idlFactory } from './authprovider.did.js';
+import { idlFactory } from './swap_contracts.did.js';
+export { idlFactory } from './swap_contracts.did.js';
 // CANISTER_ID is replaced by webpack based on node environment
-export const canisterId = process.env.AUTHPROVIDER_CANISTER_ID;
+export const canisterId = process.env.SWAP_CONTRACTS_CANISTER_ID;
 
 /**
  * 
  * @param {string | import("@dfinity/principal").Principal} canisterId Canister ID of Agent
  * @param {{agentOptions?: import("@dfinity/agent").HttpAgentOptions; actorOptions?: import("@dfinity/agent").ActorConfig}} [options]
- * @return {import("@dfinity/agent").ActorSubclass<import("./authprovider.did.js")._SERVICE>}
+ * @return {import("@dfinity/agent").ActorSubclass<import("./swap_contracts.did.js")._SERVICE>}
  */
  export const createActor = (canisterId, options) => {
   const agent = new HttpAgent({ ...options?.agentOptions });
@@ -32,7 +32,7 @@ export const canisterId = process.env.AUTHPROVIDER_CANISTER_ID;
 };
   
 /**
- * A ready-to-use agent for the authprovider canister
- * @type {import("@dfinity/agent").ActorSubclass<import("./authprovider.did.js")._SERVICE>}
+ * A ready-to-use agent for the swap_contracts canister
+ * @type {import("@dfinity/agent").ActorSubclass<import("./swap_contracts.did.js")._SERVICE>}
  */
- export const authprovider = createActor(canisterId);
+ export const swap_contracts = createActor(canisterId);

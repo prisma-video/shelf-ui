@@ -1,11 +1,3 @@
-type user = 
- service {
-   assign_role: (principal, Role) -> ();
-   createNewUser: (UserProfile) -> ();
-   getUserProfile: () -> (opt UserProfile);
-   getUserRole: () -> (opt Role);
-   updateUserProfile: (UserProfile) -> ();
- };
 type UserProfile = 
  record {
    communities: opt vec text;
@@ -22,4 +14,10 @@ type Role =
    authorized;
    guest;
  };
-service : () -> user
+service : {
+  assign_role: (principal, Role) -> ();
+  createNewUser: (UserProfile) -> ();
+  getUserProfile: () -> (opt UserProfile);
+  getUserRole: () -> (opt Role);
+  updateUserProfile: (UserProfile) -> ();
+}

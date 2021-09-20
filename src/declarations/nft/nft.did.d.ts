@@ -22,7 +22,7 @@ export interface TokenMetadata {
     'metadata_version' : bigint,
   },
 }
-export interface movieNFT {
+export interface _SERVICE {
   '_exists' : (arg_0: TokenIndex) => Promise<boolean>,
   '_isApprovedOrOwner' : (arg_0: Principal, arg_1: TokenIndex) => Promise<
       boolean
@@ -37,8 +37,9 @@ export interface movieNFT {
   'availableCycles' : () => Promise<bigint>,
   'balanceOf' : (arg_0: Principal) => Promise<bigint>,
   'getApproved' : (arg_0: TokenIndex) => Promise<Result_1>,
-  'getCaller' : () => Promise<Principal>,
+  'getCaller' : () => Promise<string>,
   'getMinter' : () => Promise<Principal>,
+  'getNFT' : (arg_0: TokenIndex) => Promise<[] | [Principal]>,
   'getNFTsOfOwner' : () => Promise<Result_2>,
   'getOwners' : () => Promise<Array<[TokenIndex, Principal]>>,
   'getTokens' : () => Promise<Array<[TokenIndex, TokenMetadata]>>,
@@ -57,4 +58,3 @@ export interface movieNFT {
       arg_2: TokenIndex,
     ) => Promise<undefined>,
 }
-export interface _SERVICE extends movieNFT {}

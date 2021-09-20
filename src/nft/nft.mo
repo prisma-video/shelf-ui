@@ -11,7 +11,9 @@ import Bool "mo:base/Bool";
 
 import Types "./types";
 
-shared (install) actor class movieNFT(mintingAuthority: Principal) = this {
+// shared (install) actor class movieNFT(mintingAuthority: Principal) = this {
+// shared (install) actor class movieNFT() = this {
+actor movieNFT {
   
   type Balance = Types.Balance;
   type TokenIndex = Types.TokenIndex;
@@ -35,7 +37,8 @@ shared (install) actor class movieNFT(mintingAuthority: Principal) = this {
   private var _tokenMetadata : HashMap.HashMap<TokenIndex, TokenMetadata> = HashMap.fromIter(_tokenMetadataState.vals(), 0, Types.TokenIndex.equal, Types.TokenIndex.hash);
   
   private stable var _supply : Balance  = 0;
-  private stable var _mintingAuthority : Principal  = mintingAuthority;
+  // private stable var _mintingAuthority : Principal  = mintingAuthority;
+  private stable var _mintingAuthority : Principal  =  Principal.fromText("mcnes-wkvkd-habbb-sctde-hwuhr-adhwb-y24aj-p2ppe-2bgva-sfvb2-5ae");
   private stable var _nextTokenId : TokenIndex  = 0;
 
   //State functions
@@ -132,10 +135,10 @@ shared (install) actor class movieNFT(mintingAuthority: Principal) = this {
 	};
 
   private func _mint(to : Principal, token : TokenIndex, _data: TokenMetadata) : async TokenIndex {
-    assert((await this._exists(token)) == false); // "ERC721: operator query for nonexistent token"
+    assert((await movieNFT._exists(token)) == false); // "ERC721: operator query for nonexistent token"
 		_owners.put(token, to);
     // Update balances
-    assert((await this._updateBalance(to, 1)) == #ok(1));
+    assert((await movieNFT._updateBalance(to, 1)) == #ok(1));
     // Update owned tokens
     switch(_ownedTokens.get(to)) {
       case (?_tokenList) {
@@ -156,13 +159,13 @@ shared (install) actor class movieNFT(mintingAuthority: Principal) = this {
 
   public shared(msg) func transferFrom(from : Principal, to : Principal, token : TokenIndex) : async () {
     // Verify caller authorization
-    assert((await this._isApprovedOrOwner(msg.caller, token)));
+    assert((await movieNFT._isApprovedOrOwner(msg.caller, token)));
 		
-    await this._transfer(from, to, token);
+    await movieNFT._transfer(from, to, token);
   };
 
   public func getApproved(token : TokenIndex) : async Result.Result<Principal, CommonError> {
-    assert(await this._exists(token)); // "ERC721: operator query for nonexistent token"
+    assert(await movieNFT._exists(token)); // "ERC721: operator query for nonexistent token"
 
     switch (_tokenApprovals.get(token)) {
       case (?approved) {
@@ -177,15 +180,14 @@ shared (install) actor class movieNFT(mintingAuthority: Principal) = this {
 
 
   public func _isApprovedOrOwner(from : Principal, token : TokenIndex) : async Bool {
-    assert(await this._exists(token)); // "ERC721: operator query for nonexistent token"
-    let isOwner: Bool = ((await this.ownerOf(token)) == #ok(from));
-    let isApproved = ((await this.getApproved(token)) == #ok(from));
+    assert(await movieNFT._exists(token)); // "ERC721: operator query for nonexistent token"
+    let isOwner: Bool = ((await movieNFT.ownerOf(token)) == #ok(from));
+    let isApproved = ((await movieNFT.getApproved(token)) == #ok(from));
     Bool.logor(isOwner, isApproved);
   };
 
+  // TODO: private
   public func _transfer(from : Principal, to : Principal, token : TokenIndex) : async () {
-    // Verify ownership
-    assert((await this.ownerOf(token)) == #ok(from));
     // Verify ownership
     // assert(to != address(0));
 
@@ -193,8 +195,8 @@ shared (install) actor class movieNFT(mintingAuthority: Principal) = this {
     // _approve(address(0), tokenId);
 
     // Update balances
-    assert(Result.isOk(await this._updateBalance(from, -1)));
-    assert(Result.isOk(await this._updateBalance(to, 1)));
+    assert(Result.isOk(await movieNFT._updateBalance(from, -1)));
+    assert(Result.isOk(await movieNFT._updateBalance(to, 1)));
 
     _owners.put(token, to);
   };
@@ -221,7 +223,7 @@ shared (install) actor class movieNFT(mintingAuthority: Principal) = this {
         if(Int.equal(add, -1)) { newBalance := Nat.sub(_balance, 1) }
         else { newBalance := Nat.add(_balance, 1) };
         _balances.put(user, newBalance);
-				return #ok(newBalance);
+				return #ok(1);
       };
       case (_) {
         if(Int.equal(add, 1)) { _balances.put(user, 1); }
@@ -239,8 +241,12 @@ shared (install) actor class movieNFT(mintingAuthority: Principal) = this {
     Iter.toArray(_tokenMetadata.entries());
   };
 
-  public query (msg) func getCaller() : async Principal {
-    msg.caller
+  public query (msg) func getCaller() : async Text {
+    Principal.toText(msg.caller);
+  };
+
+  public query func getNFT(token: TokenIndex) : async ?Principal {
+    _owners.get(token);
   };
 
   public query (msg) func getNFTsOfOwner() : async  Result.Result<[(TokenIndex, TokenMetadata)], CommonError> {
@@ -261,25 +267,8 @@ shared (install) actor class movieNFT(mintingAuthority: Principal) = this {
 				return #ok([]);
       };
     };
-    
-    // Iter.toArray(HashMap.mapFilter(_tokenMetadata, ExtCore.TokenIndex.equal, ExtCore.TokenIndex.hash, ).entries());
-  }; //tokenOfOwnerByIndex
+  };
 
-  // public query func metadata(token : TokenIndex) : async Result.Result<Blob, CommonError> {
-  //   if (ExtCore.TokenIdentifier.isPrincipal(token, Principal.fromActor(this)) == false) {
-	// 		return #err(#InvalidToken(token));
-	// 	};
-	// 	let tokenind = ExtCore.TokenIdentifier.getIndex(token);
-  //   switch (_tokenMetadata.get(tokenind)) {
-  //     case (?token_metadata) {
-	// 			return #ok(token_metadata);
-  //     };
-  //     case (_) {
-  //       return #err(#InvalidToken(token));
-  //     };
-  //   };
-  // };
-  
   //Internal cycle management - good general case
   public func acceptCycles() : async () {
     let available = Cycles.available();

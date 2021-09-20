@@ -8,10 +8,15 @@
       "main": "src/nft/nft.mo",
       "type": "motoko"
     },
+    "swap_contracts": {
+      "main": "src/swap_contracts/swap_contracts.mo",
+      "type": "motoko"
+    },
     "shelf_ui": {
       "dependencies": [
         "user",
-        "nft"
+        "nft",
+        "swap_contracts"
       ],
       "frontend": {
         "entrypoint": "src/shelf_ui/public/index.html"

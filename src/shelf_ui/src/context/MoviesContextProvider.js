@@ -108,10 +108,17 @@ const MovieContextProvider = ({ children }) => {
   const getMovieByIdRequest = async (id) => {
     const movieData = require("../mockup");
     const movieData1 = movieData.filter(movie => movie.id == id);
-        
+
+    const data = await listNFTs();
     console.log("CALL 3");
+    const nfts = data.filter(nft => parseInt(nft[1].properties.internal_id) == id);
+    
+    const data2 = await listMyNFTs();
+    const nfts2 = [];
+    if(data2.length > 0) data2.filter(nft => parseInt(nft[1].properties.internal_id) == id);
+    
     if (movieData1 && movieData1.length) {
-      dispatch({ type: 'GET_MOVIE_SUCCESS', payload: movieData1[0] });
+      dispatch({ type: 'GET_MOVIE_SUCCESS', payload: {nfts: nfts, my_nfts: nfts2, ...movieData1[0]}});
     } else {
       dispatch({ type: 'GET_MOVIE_ERROR', payload: movieData1 });
     }

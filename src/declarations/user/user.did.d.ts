@@ -11,11 +11,10 @@ export interface UserProfile {
   'lastName' : [] | [string],
   'firstName' : [] | [string],
 }
-export interface user {
+export interface _SERVICE {
   'assign_role' : (arg_0: Principal, arg_1: Role) => Promise<undefined>,
   'createNewUser' : (arg_0: UserProfile) => Promise<undefined>,
   'getUserProfile' : () => Promise<[] | [UserProfile]>,
   'getUserRole' : () => Promise<[] | [Role]>,
   'updateUserProfile' : (arg_0: UserProfile) => Promise<undefined>,
 }
-export interface _SERVICE extends user {}

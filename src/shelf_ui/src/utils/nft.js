@@ -17,3 +17,12 @@ export async function listMyNFTs() {
     return null;
   }
 }
+
+export async function getCaller() {
+  const list = await movieNFT.getCaller();
+  if (list) {
+    return list;
+  } else {
+    return null;
+  }
+}

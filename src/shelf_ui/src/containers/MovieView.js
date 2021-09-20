@@ -1,29 +1,49 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { MoviesContext } from '../context/MoviesContextProvider';
 import MovieCard from '../components/MovieList/MovieCard';
 
-// import Plyr from 'plyr-react'
-// import './plyr.css'
+import { isOwnedOrReservable, makeOffer, executeSalesOrder, requestReservation, getCaller } from "../utils/index";
+
+import Plyr from 'plyr-react'
+import './plyr.css'
 
 const MovieView = () => {
 	const { movies, movie_data, getMovieByIdRequest } = useContext(MoviesContext);
 	let { id } = useParams();
+	const defValWatchable = movie_data.my_nfts != undefined && movie_data.my_nfts.length >0 ? true : false;
+	console.log( movie_data.my_nfts, defValWatchable);
+	const [isWatchable, setIsWatchable] = useState(defValWatchable);
 
 	useEffect(() => {
         getMovieByIdRequest(id);
 	}, []);
 
-	// const sourceVideo = {
-	// 	type: "video",
-	// 	source: [
-	// 		{src: "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4", type:"video/mp4", size:"576"},
-	// 		{src: "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4", type:"video/mp4", size:"720"},
-	// 		{src: "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4", type:"video/mp4", size:"1080"}
-	// 	],
-	// 	poster:"https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg",
-	// 	tracks: [{kind:"captions", label:"English", srcLang:"en", src:"https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt", default: true}]
-	// };
+	const acquireNFT = async () => {
+		console.log((await getCaller()));
+		if (await isOwnedOrReservable(movie_data.nfts[0][0])) {
+			const orderId = await makeOffer({nft: movie_data.nfts[0][0], purchasePrice: 100});
+			const executionOutcome = await executeSalesOrder(orderId);
+			console.log(movie_data.nfts[0][0], orderId, executionOutcome);
+			await requestReservation(movie_data.nfts[0][0]);
+			setIsWatchable(true);
+		} else {
+			console.log("not reservable");
+		}
+	};
+
+	const sourceVideo = {
+		type: "video",
+		source: [
+			// {src: "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4"},
+			{src: "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4", type:"video/mp4", size:"576"},
+			{src: "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4", type:"video/mp4", size:"720"},
+			{src: "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4", type:"video/mp4", size:"1080"}
+		],
+		poster:"https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg",
+		tracks: [{kind:"captions", label:"English", srcLang:"en", src:"https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt", default: true}]
+	};
+
 
 	return (
 	!movie_data.directors ?
@@ -65,13 +85,23 @@ const MovieView = () => {
 				</div>
 				
 				<div className="col-12 col-xl-6">
-					<video controls crossOrigin="true" playsInline data-poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg" id="player">
-						<source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4" size="576" />
-						<source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4" size="720" />
-						<source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4" type="video/mp4" size="1080" />
-						<track kind="captions" label="English" srcLang="en" src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt" default />
-					</video>
-					{/* <Plyr source={sourceVideo}/> */}
+					{
+					!isWatchable ?
+					<>
+					<img src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg" onClick={acquireNFT} id="player" className="plyr" />
+					<span style={{color:"white"}}>You do not own a copy but there are <b style={{color:"darkred"}}>{movie_data.nfts.length} NFTs</b> available.
+					<a onClick={acquireNFT} className="header__sign-in"><i className="icon ion-ios-log-in"></i><span>Aquire NFT</span></a><button></button>
+					</span>
+					</>
+					:
+					// <video controls crossOrigin="true" playsInline data-poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg" id="player">
+					// 	<source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4" size="576" />
+					// 	<source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4" size="720" />
+					// 	<source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4" type="video/mp4" size="1080" />
+					// 	<track kind="captions" label="English" srcLang="en" src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt" default />
+					// </video>
+					<Plyr source={sourceVideo}/>
+					}
 				</div>
 			</div>
 		</div>
@@ -135,7 +165,7 @@ const MovieView = () => {
 													<span className="comments__name">John Doe</span>
 													<span className="comments__time">30.08.2018, 17:53</span>
 												</div>
-												<p className="comments__text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
+												<p className="comments__text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isnt anything embarrassing hidden in the middle of text.</p>
 												<div className="comments__actions">
 													<div className="comments__rate">
 														<button type="button"><i className="icon ion-md-thumbs-up"></i>12</button>
@@ -154,7 +184,7 @@ const MovieView = () => {
 													<span className="comments__name">John Doe</span>
 													<span className="comments__time">24.08.2018, 16:41</span>
 												</div>
-												<p className="comments__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+												<p className="comments__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
 												<div className="comments__actions">
 													<div className="comments__rate">
 														<button type="button"><i className="icon ion-md-thumbs-up"></i>8</button>
@@ -191,7 +221,7 @@ const MovieView = () => {
 
 													<span className="reviews__rating reviews__rating--green">8.4</span>
 												</div>
-												<p className="reviews__text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
+												<p className="reviews__text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which donlook even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isnt anything embarrassing hidden in the middle of text.</p>
 											</li>
 										</ul>
 

@@ -1,0 +1,40 @@
+type TokenIndex__1 = nat32;
+type TokenIndex = nat32;
+type Time = int;
+type SalesTypes = 
+ variant {
+   automatic;
+   manual;
+   undefined;
+ };
+type SalesOffer = 
+ record {
+   nft: TokenIndex__1;
+   purchasePrice: nat32;
+ };
+type SalesContractStatus = 
+ variant {
+   approved;
+   blocked;
+   pending;
+   rejected;
+ };
+type SalesContractId = nat32;
+type SalesContract = 
+ record {
+   buyer: principal;
+   executionDate: Time;
+   executionType: SalesTypes;
+   nft: TokenIndex__1;
+   offerDate: Time;
+   purchasePrice: nat32;
+   seller: principal;
+   status: SalesContractStatus;
+ };
+service : {
+  executeSalesOrder: (SalesContractId) -> (bool);
+  getOffer: (SalesContractId) -> (opt SalesContract) query;
+  getReservationAvailability: (TokenIndex) -> (bool);
+  makeOffer: (SalesOffer) -> (SalesContractId);
+  requestReservation: (TokenIndex) -> (bool);
+}

@@ -1,31 +1,3 @@
-type movieNFT = 
- service {
-   _exists: (TokenIndex) -> (bool);
-   _isApprovedOrOwner: (principal, TokenIndex) -> (bool);
-   _transfer: (principal, principal, TokenIndex) -> ();
-   _updateBalance: (principal, int) -> (Result);
-   acceptCycles: () -> ();
-   availableCycles: () -> (nat) query;
-   balanceOf: (principal) -> (nat) query;
-   getApproved: (TokenIndex) -> (Result_1);
-   getCaller: () -> (principal) query;
-   getMinter: () -> (principal) query;
-   getNFTsOfOwner: () -> (Result_2) query;
-   getOwners: () -> (vec record {
-                           TokenIndex;
-                           principal;
-                         }) query;
-   getTokens: () -> (vec record {
-                           TokenIndex;
-                           TokenMetadata;
-                         }) query;
-   mintMovieNFT: (principal, TokenMetadata) -> (TokenIndex);
-   ownerOf: (TokenIndex) -> (Result_1) query;
-   setMinter: (principal) -> ();
-   tokenOfOwnerByIndex: (principal, nat) -> (opt TokenIndex) query;
-   totalSupply: () -> (Result) query;
-   transferFrom: (principal, principal, TokenIndex) -> ();
- };
 type TokenMetadata = 
  record {
    description: text;
@@ -66,4 +38,31 @@ type CommonError =
    Other: text;
  };
 type Balance = nat;
-service : (principal) -> movieNFT
+service : {
+  _exists: (TokenIndex) -> (bool);
+  _isApprovedOrOwner: (principal, TokenIndex) -> (bool);
+  _transfer: (principal, principal, TokenIndex) -> ();
+  _updateBalance: (principal, int) -> (Result);
+  acceptCycles: () -> ();
+  availableCycles: () -> (nat) query;
+  balanceOf: (principal) -> (nat) query;
+  getApproved: (TokenIndex) -> (Result_1);
+  getCaller: () -> (text) query;
+  getMinter: () -> (principal) query;
+  getNFT: (TokenIndex) -> (opt principal) query;
+  getNFTsOfOwner: () -> (Result_2) query;
+  getOwners: () -> (vec record {
+                          TokenIndex;
+                          principal;
+                        }) query;
+  getTokens: () -> (vec record {
+                          TokenIndex;
+                          TokenMetadata;
+                        }) query;
+  mintMovieNFT: (principal, TokenMetadata) -> (TokenIndex);
+  ownerOf: (TokenIndex) -> (Result_1) query;
+  setMinter: (principal) -> ();
+  tokenOfOwnerByIndex: (principal, nat) -> (opt TokenIndex) query;
+  totalSupply: () -> (Result) query;
+  transferFrom: (principal, principal, TokenIndex) -> ();
+}

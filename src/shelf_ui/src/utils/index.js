@@ -2,6 +2,7 @@ import { Principal } from "@dfinity/principal";
 
 export * from "./auth";
 export * from "./nft";
+export * from "./swap_contracts";
 
 export const KEY_LOCALSTORAGE_USER = `ic-shelf-user`;
 
