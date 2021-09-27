@@ -92,7 +92,8 @@ const isDevelopment = process.env.NODE_ENV !== "production";
 module.exports = [{
   target: "web",
   mode: isDevelopment ? "development" : "production",
-  entry: ['babel-polyfill', path.join(__dirname, "src", "shelf_ui", "src", "index.js")],
+  // entry: ['babel-polyfill', path.join(__dirname, "src", "shelf_ui", "src", "index.js")],
+  entry: ['babel-polyfill', path.join(__dirname, "src", "index.js")],
   devtool: isDevelopment ? "source-map" : false,
   // optimization: {
   //   minimize: !isDevelopment,
@@ -130,7 +131,8 @@ module.exports = [{
     rules: [
       {
         test: /\.js$/,
-        include: path.resolve(__dirname, 'src',  "shelf_ui", "src"),
+        // include: path.resolve(__dirname, 'src',  "shelf_ui", "src"),
+        include: path.resolve(__dirname, "src"),
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader',
@@ -150,14 +152,16 @@ module.exports = [{
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, path.join("src", "shelf_ui", "assets", "index_template.html")),
+      template: path.join(__dirname, path.join("public", "index_template.html")),
+      // template: path.join(__dirname, path.join("src", "shelf_ui", "assets", "index_template.html")),
       filename: './index.html',
       cache: false
     }),
     new CopyPlugin({
       patterns: [
         {
-          from: path.join(__dirname, "src", "shelf_ui", "assets"),
+          from: path.join(__dirname, "public"),
+          // from: path.join(__dirname, "src", "shelf_ui", "assets"),
           to: path.join(__dirname, "dist"),
         },
       ],
@@ -190,7 +194,7 @@ module.exports = [{
       },
     },
     hot: true,
-    contentBase: path.resolve(__dirname, "./src/shelf_ui"),
+    contentBase: path.resolve(__dirname, "./src"),
     watchContentBase: true,
     historyApiFallback: true,
   },

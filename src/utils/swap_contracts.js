@@ -1,4 +1,4 @@
-import { swap_contracts } from "../../../declarations/swap_contracts/index";
+import { swap_contracts } from "../declarations/swap_contracts/index";
 
 export async function isOwnedOrReservable(token) {
   const list = await swap_contracts.getReservationAvailability(token);

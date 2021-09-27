@@ -1,4 +1,4 @@
-import { nft as movieNFT} from "../../../declarations/nft/index";
+import { nft as movieNFT} from "../declarations/nft/index";
 
 export async function listNFTs() {
   const list = await movieNFT.getTokens();

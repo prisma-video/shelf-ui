@@ -1,4 +1,4 @@
-import { user, idlFactory } from "../../../declarations/user/index";
+import { user, idlFactory } from "../declarations/user/index";
 
 export const baseProfile= idlFactory.UserProfile;
 

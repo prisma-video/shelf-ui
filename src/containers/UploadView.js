@@ -3,7 +3,7 @@ import { useDfinityAuth } from "../context/DfinityContextProvider"
 import {
     createActor,
     canisterId,
-  } from "../../../declarations/shelf_ui";
+  } from "../declarations/shelf_ui/index";
 // import { IDL } from "@dfinity/candid";
 
 const UploadView = () => {

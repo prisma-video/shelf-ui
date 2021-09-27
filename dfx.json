@@ -1,19 +1,19 @@
 {
   "canisters": {
     "user": {
-      "main": "src/user/user.mo",
+      "main": "backend/dfinity/user/user.mo",
       "type": "motoko"
     },
     "nft": {
-      "main": "src/nft/nft.mo",
+      "main": "backend/dfinity/nft/nft.mo",
       "type": "motoko"
     },
     "swap_contracts": {
-      "main": "src/swap_contracts/swap_contracts.mo",
+      "main": "backend/dfinity/swap_contracts/swap_contracts.mo",
       "type": "motoko"
     },
     "video": {
-      "main": "src/video/video.mo",
+      "main": "backend/dfinity/video/video.mo",
       "type": "motoko"
     },
     "shelf_ui": {
@@ -34,7 +34,7 @@
   },
   "defaults": {
     "build": {
-      "output": "src/declarations/",
+      "output": "src/backend/dfinity/",
       "packtool": ""
     }
   },
