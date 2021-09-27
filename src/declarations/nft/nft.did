@@ -19,10 +19,15 @@ type TokenMetadata =
  };
 type TokenIndex__1 = nat32;
 type TokenIndex = nat32;
-type Result_2 = 
+type Result_3 = 
  variant {
    err: CommonError;
    ok: vec TokenIndex;
+ };
+type Result_2 = 
+ variant {
+   err: text;
+   ok: text;
  };
 type Result_1 = 
  variant {
@@ -41,8 +46,9 @@ type CommonError =
  };
 type Balance = nat;
 service : {
-  _exists: (TokenIndex) -> (bool);
+  _exists: (TokenIndex) -> (bool) query;
   _isApprovedOrOwner: (principal, TokenIndex) -> (bool);
+  _setVideo: (TokenIndex, text) -> ();
   _transfer: (principal, principal, TokenIndex) -> ();
   _updateBalance: (principal, int) -> (Result);
   _updateOwnedTokens: (principal, TokenIndex, UpdateOwnedTokenTypes) -> ();
@@ -57,7 +63,7 @@ service : {
                                TokenIndex;
                                TokenMetadata;
                              }) query;
-  getNFTsOfOwner3: (principal) -> (Result_2) query;
+  getNFTsOfOwner3: (principal) -> (Result_3) query;
   getOwners: () -> (vec record {
                           TokenIndex;
                           principal;
@@ -70,7 +76,8 @@ service : {
                           TokenIndex;
                           TokenMetadata;
                         }) query;
-  mintMovieNFT: (principal, TokenMetadata) -> (TokenIndex);
+  getVideo: (TokenIndex) -> (Result_2);
+  mintMovieNFT: (principal, TokenMetadata, text) -> (TokenIndex);
   ownerOf: (TokenIndex) -> (Result_1) query;
   setMinter: (principal) -> ();
   totalSupply: () -> (Result) query;

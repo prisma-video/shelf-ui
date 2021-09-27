@@ -12,11 +12,16 @@
       "main": "src/swap_contracts/swap_contracts.mo",
       "type": "motoko"
     },
+    "video": {
+      "main": "src/video/video.mo",
+      "type": "motoko"
+    },
     "shelf_ui": {
       "dependencies": [
         "user",
         "nft",
-        "swap_contracts"
+        "swap_contracts",
+        "video"
       ],
       "frontend": {
         "entrypoint": "dist/index.html"

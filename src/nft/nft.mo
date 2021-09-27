@@ -6,7 +6,6 @@ import Iter "mo:base/Iter";
 import Array "mo:base/Array";
 import Nat "mo:base/Nat";
 import Int "mo:base/Int";
-// import List "mo:base/List";
 import Bool "mo:base/Bool";
 
 import Types "./types";
@@ -37,6 +36,9 @@ actor movieNFT {
 	private stable var _tokenMetadataState : [(TokenIndex, TokenMetadata)] = [];
   private var _tokenMetadata : HashMap.HashMap<TokenIndex, TokenMetadata> = HashMap.fromIter(_tokenMetadataState.vals(), 0, Types.TokenIndex.equal, Types.TokenIndex.hash);
   
+	private stable var _tokenVideoState : [(TokenIndex, Text)] = [];
+  private var _tokenVideo : HashMap.HashMap<TokenIndex, Text> = HashMap.fromIter(_tokenVideoState.vals(), 0, Types.TokenIndex.equal, Types.TokenIndex.hash);
+  
   private stable var _supply : Balance  = 0;
   // private stable var _mintingAuthority : Principal  = mintingAuthority;
   private stable var _mintingAuthority : Principal  =  Principal.fromText("mcnes-wkvkd-habbb-sctde-hwuhr-adhwb-y24aj-p2ppe-2bgva-sfvb2-5ae");
@@ -49,6 +51,7 @@ actor movieNFT {
     _tokenApprovalsState := Iter.toArray(_tokenApprovals.entries());
     _ownedTokenState := Iter.toArray(_ownedTokens.entries());
     _tokenMetadataState := Iter.toArray(_tokenMetadata.entries());
+    _tokenVideoState := Iter.toArray(_tokenVideo.entries());
   };
   system func postupgrade() {
     _ownersState := [];
@@ -56,10 +59,11 @@ actor movieNFT {
     _tokenApprovalsState := [];
     _ownedTokenState := [];
     _tokenMetadataState := [];
+    _tokenVideoState := [];
   };
 
   // ERC721 functions
-  public shared query func balanceOf(owner: Principal) : async Nat {
+  public query func balanceOf(owner: Principal) : async Nat {
     switch(_balances.get(owner)) {
       case (?_balance) {
 				return _balance;
@@ -128,14 +132,14 @@ actor movieNFT {
 		_mintingAuthority := minter;
 	};
 
-  public shared(msg) func mintMovieNFT(to : Principal, metadata : TokenMetadata) : async TokenIndex {
+  public shared(msg) func mintMovieNFT(to : Principal, metadata : TokenMetadata, videoUrl: Text) : async TokenIndex {
 		assert(msg.caller == _mintingAuthority);
 		// assert(to == _mintingAuthority); "ERC721: mint to the zero address")
-		// assert(!_exists(tokenId));"ERC721: token already minted"
-		(await _mint(to, _nextTokenId, metadata));
+		// assert(_exists(token) == false); //"ERC721: token already minted"
+		(await _mint(to, _nextTokenId, metadata, videoUrl));
 	};
 
-  private func _mint(to : Principal, token : TokenIndex, _data: TokenMetadata) : async TokenIndex {
+  private func _mint(to : Principal, token : TokenIndex, _data: TokenMetadata, videoUrl: Text) : async TokenIndex {
     assert((await movieNFT._exists(token)) == false); // "ERC721: operator query for nonexistent token"
 		_owners.put(token, to);
     // Update balances
@@ -144,6 +148,8 @@ actor movieNFT {
     await _updateOwnedTokens(to, token, #Add);
     // Update metadata
 		_tokenMetadata.put(token, _data);
+    // Update videos
+		_tokenVideo.put(token, videoUrl);
 		_supply := _supply + 1;
 		_nextTokenId := _nextTokenId + 1;
     token
@@ -204,7 +210,7 @@ actor movieNFT {
 
   // Utils
 
-  public func _exists(token : TokenIndex) : async Bool {
+  public query func _exists(token : TokenIndex) : async Bool {
     switch (_owners.get(token)) {
       case (?owner) {
 				return true;
@@ -300,6 +306,35 @@ actor movieNFT {
 				return #ok([]);
       };
     };
+  };
+
+  // Video functions
+  public shared(msg) func getVideo(token : TokenIndex) : async Result.Result<Text, Text> {
+    assert(await movieNFT._exists(token));
+    switch(await movieNFT.getNFT(token)) {
+      case(?_owner) {
+        if(msg.caller == _owner) {
+          switch(_tokenVideo.get(token)) {
+            case(?video) {
+              #ok(video);
+            };
+            case(_) {
+              #err("Could not find video url");
+            };
+          };
+        } else {
+          #err("Could not find owner");
+        };
+      };
+      case(_) {
+        #err("Could not find token");
+      };
+    };
+  };
+
+  public shared(msg) func _setVideo(token : TokenIndex, videoUrl: Text) : async () {
+    assert(await movieNFT._exists(token));
+    _tokenVideo.put(token, videoUrl);
   };
 
   //Internal cycle management - good general case

@@ -6,7 +6,9 @@ export type Result = { 'ok' : Balance } |
   { 'err' : CommonError };
 export type Result_1 = { 'ok' : Principal } |
   { 'err' : CommonError };
-export type Result_2 = { 'ok' : Array<TokenIndex> } |
+export type Result_2 = { 'ok' : string } |
+  { 'err' : string };
+export type Result_3 = { 'ok' : Array<TokenIndex> } |
   { 'err' : CommonError };
 export type TokenIndex = number;
 export type TokenIndex__1 = number;
@@ -29,6 +31,7 @@ export interface _SERVICE {
   '_isApprovedOrOwner' : (arg_0: Principal, arg_1: TokenIndex) => Promise<
       boolean
     >,
+  '_setVideo' : (arg_0: TokenIndex, arg_1: string) => Promise<undefined>,
   '_transfer' : (
       arg_0: Principal,
       arg_1: Principal,
@@ -48,13 +51,16 @@ export interface _SERVICE {
   'getMinter' : () => Promise<Principal>,
   'getNFT' : (arg_0: TokenIndex) => Promise<[] | [Principal]>,
   'getNFTsOfOwner' : () => Promise<Array<[TokenIndex, TokenMetadata]>>,
-  'getNFTsOfOwner3' : (arg_0: Principal) => Promise<Result_2>,
+  'getNFTsOfOwner3' : (arg_0: Principal) => Promise<Result_3>,
   'getOwners' : () => Promise<Array<[TokenIndex, Principal]>>,
   'getOwnerships' : () => Promise<Array<[Principal, Array<TokenIndex>]>>,
   'getTokens' : () => Promise<Array<[TokenIndex, TokenMetadata]>>,
-  'mintMovieNFT' : (arg_0: Principal, arg_1: TokenMetadata) => Promise<
-      TokenIndex
-    >,
+  'getVideo' : (arg_0: TokenIndex) => Promise<Result_2>,
+  'mintMovieNFT' : (
+      arg_0: Principal,
+      arg_1: TokenMetadata,
+      arg_2: string,
+    ) => Promise<TokenIndex>,
   'ownerOf' : (arg_0: TokenIndex) => Promise<Result_1>,
   'setMinter' : (arg_0: Principal) => Promise<undefined>,
   'totalSupply' : () => Promise<Result>,

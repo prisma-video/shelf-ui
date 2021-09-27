@@ -33,6 +33,9 @@ const Header = () => {
                         <li className="header__nav-item">
                             <Link to="/myshelf" className="header__nav-link">My Shelf</Link>
                         </li>
+                        <li className="header__nav-item">
+                            <Link to="/upload" className="header__nav-link">Upload Movie</Link>
+                        </li>
                         </>
                         :
                         <>

@@ -10,6 +10,7 @@ import ProfileView from './containers/ProfileView';
 import SignInView from './containers/SignInView';
 import CatalogView from './containers/CatalogView';
 import MovieView from './containers/MovieView';
+import UploadView from './containers/UploadView';
 
 const meta = {
   title: 'The SHELF',
@@ -32,6 +33,7 @@ function App() {
         <Route path ="/profile" component={ProfileView} />
         <Route path ="/pricing" component={() => <CatalogView mode={"pricing"} />} />
         <Route path ="/myshelf" component={() => <CatalogView mode={"myshelf"} />} />
+        <Route path ="/upload" component={() => <UploadView />} />
         <Route exact path ="/" component={() => <CatalogView mode={"catalog"} />} />
       </Switch>
       <Footer />

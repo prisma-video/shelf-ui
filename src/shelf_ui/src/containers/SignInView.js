@@ -21,7 +21,7 @@ const SignInView = () => {
     // user to a new tab
     const handleLogin = async () => {
       await auth.logIn();
-      console.log(auth);
+    //   console.log(auth);
       history.push("/");
     };
     return (

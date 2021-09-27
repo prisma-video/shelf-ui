@@ -24,7 +24,7 @@ for n, row in enumerate(data):
 
     metadata = f' record {{name="NFT of {title}"; description= "DVD of {title}"; properties= record {{title="{title}"; original_owner=principal "{original_owner}";internal_id="{internal_id}";shipment_id="{shipment_id}";previous_metadata="{previous_metadata}";metadata_version={metadata_version}}}}}'
 
-    command="dfx canister {} call nft mintMovieNFT '(principal \"{}\", {})'".format(network, MINTER, metadata)
+    command="dfx canister {} call nft mintMovieNFT '(principal \"{}\", {}, {})'".format(network, MINTER, metadata, "In-the-Park-v2")
     # print(command)
     ret = subprocess.run(command, capture_output=True, shell=True)
 
