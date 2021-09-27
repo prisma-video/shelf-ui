@@ -1,0 +1,8 @@
+[workspace]
+members = [
+    "backend/dfinity/metadata_db",
+]
+
+[profile.release]
+lto = true
+opt-level = 'z'

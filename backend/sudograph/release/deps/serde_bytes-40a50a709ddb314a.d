@@ -1,0 +1,11 @@
+/Users/vincentlopez/projects/theshelf/shelf_ui/backend/sudograph/release/deps/serde_bytes-40a50a709ddb314a.rmeta: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_bytes-0.11.5/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_bytes-0.11.5/src/bytes.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_bytes-0.11.5/src/de.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_bytes-0.11.5/src/ser.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_bytes-0.11.5/src/bytebuf.rs
+
+/Users/vincentlopez/projects/theshelf/shelf_ui/backend/sudograph/release/deps/libserde_bytes-40a50a709ddb314a.rlib: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_bytes-0.11.5/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_bytes-0.11.5/src/bytes.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_bytes-0.11.5/src/de.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_bytes-0.11.5/src/ser.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_bytes-0.11.5/src/bytebuf.rs
+
+/Users/vincentlopez/projects/theshelf/shelf_ui/backend/sudograph/release/deps/serde_bytes-40a50a709ddb314a.d: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_bytes-0.11.5/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_bytes-0.11.5/src/bytes.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_bytes-0.11.5/src/de.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_bytes-0.11.5/src/ser.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_bytes-0.11.5/src/bytebuf.rs
+
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_bytes-0.11.5/src/lib.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_bytes-0.11.5/src/bytes.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_bytes-0.11.5/src/de.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_bytes-0.11.5/src/ser.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_bytes-0.11.5/src/bytebuf.rs:
