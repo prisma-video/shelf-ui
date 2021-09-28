@@ -28,6 +28,7 @@ export function useProvideAuth(authClient) {
   const [user, setUser] = useState();
   const [isAuthenticatedLocal, setIsAuthenticatedLocal] = useState(false);
   const [_identity, _setIdentity] = useState();
+  const [_principal, _setPrincipal] = useState();
   const [isAuthClientReady, setAuthClientReady] = useState(false);
 //   const [urlWithSearch] = useState(globalThis.location.search);
   const [urlWithSearch] = useState();
@@ -58,6 +59,7 @@ export function useProvideAuth(authClient) {
       ([identity, isAuthenticated]) => {
         setIsAuthenticatedLocal(isAuthenticated || false);
         _setIdentity(identity);
+        _setPrincipal(identity.getPrincipal().toString());
         setUserFromLocalStorage();
         setAuthClientReady(true);
       }
@@ -100,6 +102,7 @@ export function useProvideAuth(authClient) {
         const identity = await authClient.getIdentity();
         if (identity && !identity.getPrincipal().isAnonymous()) {
           _setIdentity(identity);
+          _setPrincipal(identity.getPrincipal().toString());
         }
       })();
     }
@@ -107,6 +110,7 @@ export function useProvideAuth(authClient) {
 
   // Just creating variables here so that it's pretty below
   const identity = _identity;
+  const principal = _principal;
   const isAuthenticated = isAuthenticatedLocal;
 
   // Login to the identity provider by sending user to the IDP and logging
@@ -118,6 +122,7 @@ export function useProvideAuth(authClient) {
     if (identity) {
       setIsAuthenticatedLocal(true);
       _setIdentity(identity);
+      _setPrincipal(identity.getPrincipal().toString());
       getUserDetails();
     } else {
       console.error("Could not get identity from identity provider");
@@ -157,6 +162,7 @@ export function useProvideAuth(authClient) {
     logOut,
     user,
     identity,
+    principal,
     setUser,
     getUserDetails,
     updateUserDetails,
@@ -169,6 +175,7 @@ const dfinityAuthContext = createContext({
     isAuthClientReady: false,
     hasShelfAccount: false,
     identity: null,
+    principal: null,
     logIn: () => {},
     logOut: () => {},
     user: undefined,

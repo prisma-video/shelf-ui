@@ -13,6 +13,7 @@ const Main = ({ mode }) => {
 	useEffect(() => {
         if(mode=="myshelf") {getMyMoviesRequest()}
         else if (mode=="catalog") {getMoviesRequest()}
+        // console.log(auth.identity.getPrincipal().toString())
 	}, []);
 
     
