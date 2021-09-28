@@ -19,7 +19,8 @@ const agent = new HttpAgent();
 
 const actor = Actor.createActor(idlFactory, {
   agent,
-  canisterId: 'rdmx6-jaaaa-aaaaa-aaadq-cai'
+  // canisterId: 'rdmx6-jaaaa-aaaaa-aaadq-cai' ? 'sdhmb-viaaa-aaaai-aar5a-cai'
+  canisterId: 'sdhmb-viaaa-aaaai-aar5a-cai'
 });
 
 

@@ -27,13 +27,19 @@ const UploadView = () => {
             const identity = auth.identity;
             const assetActor = createActor(canisterId, { agentOptions: { identity: identity },});
             const foobar = [...new TextEncoder().encode(inputRef['name'])]
-            await assetActor.store({
+            const res = await assetActor.store({
                 key: "/test.mp4",
                 content: foobar,
                 sha256: [],
                 content_type: "text/plain",
                 content_encoding: "identity",
               });
+            console.log("Uploaded", res)
+            const get = await assetActor.get({
+                key: "/foobar.txt",
+                accept_encodings: ["identity"],
+            });
+            console.log("Pulled", get)
         }
     };
     // console.log(auth);
