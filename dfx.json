@@ -13,8 +13,7 @@
       "type": "motoko"
     },
     "video": {
-      "main": "backend/dfinity/video/video.mo",
-      "type": "motoko"
+      "type": "assets"
     },
     "metadata_db": {
         "type": "custom",
