@@ -3,6 +3,55 @@ import React from 'react';
 // import { listJobCategories as GET_CATEGORIES, listMovies as GET_MOVIES, getMovie as GET_MOVIE_BY_ID} from '../graphql/queries';
 // import { listMovies as GET_MOVIES, getMovie as GET_MOVIE_BY_ID} from '../graphql/queries';
 
+import {
+  Actor,
+  HttpAgent
+} from '@dfinity/agent';
+
+const idlFactory = ({ IDL }) => {
+  return IDL.Service({
+      graphql_query: IDL.Func([IDL.Text, IDL.Text], [IDL.Text], ['query']),
+      graphql_mutation: IDL.Func([IDL.Text, IDL.Text], [IDL.Text], [])
+  });
+};
+
+const agent = new HttpAgent();
+
+const actor = Actor.createActor(idlFactory, {
+  agent,
+  canisterId: 'rdmx6-jaaaa-aaaaa-aaadq-cai'
+});
+
+
+
+async function getMovies() {
+  const result = await actor.graphql_query(`
+    query {
+      readMovie {
+        id,
+        legacy_id,
+        original_language,
+        original_title,
+        overview,
+        popularity,
+        release_date,
+        title,
+        tags(limit: 5) {name},
+        vote_average,
+        vote_count,
+        directors(limit: 5) {name},
+        cast(limit: 5) {name}
+        }
+      }
+  `, JSON.stringify({}));
+
+  const resultJSON = JSON.parse(result);
+  const movies = resultJSON.data.readMovie;
+
+
+  return movies;
+}
+
 export const MoviesContext = React.createContext();
 
 import {
@@ -85,8 +134,9 @@ const MovieContextProvider = ({ children }) => {
     const movieIds = data.map(x => parseInt(x[1].properties.internal_id));
     console.log("CALL 1");
 
-    const movieData = require("../mockup");
-    const movieData1 = movieData.filter(movie => movieIds.includes(movie.id));
+    // const movieData = require("../mockup");
+    const movieData = await getMovies();
+    const movieData1 = movieData.filter(movie => movieIds.includes(movie.legacy_id));
     
     if (movieData1 && movieData1.length) {
       dispatch({ type: 'GET_MOVIES_SUCCESS', payload: movieData1 });
@@ -100,8 +150,9 @@ const MovieContextProvider = ({ children }) => {
     const movieIds = data.map(x => parseInt(x[1].properties.internal_id));
     console.log("CALL 2", data, movieIds);
 
-    const movieData = require("../mockup");
-    const movieData1 = movieData.filter(movie => movieIds.includes(movie.id));
+    // const movieData = require("../mockup");
+    const movieData = await getMovies();
+    const movieData1 = movieData.filter(movie => movieIds.includes(movie.legacy_id));
 
     if (movieData1 && movieData1.length) {
       dispatch({ type: 'GET_MY_MOVIES_SUCCESS', payload: movieData1 });
@@ -111,8 +162,9 @@ const MovieContextProvider = ({ children }) => {
   };
   
   const getMovieByIdRequest = async (id) => {
-    const movieData = require("../mockup");
-    const movieData1 = movieData.filter(movie => movie.id == id);
+    // const movieData = require("../mockup");
+    const movieData = await getMovies();
+    const movieData1 = movieData.filter(movie => movie.legacy_id == id);
 
     const data = await listNFTs();
     console.log("CALL 3");

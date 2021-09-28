@@ -1,0 +1,11 @@
+/Users/vincentlopez/projects/theshelf/shelf_ui/backend/sudograph/release/deps/ascii-9b260bedf309f220.rmeta: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ascii-0.9.3/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ascii-0.9.3/src/ascii_char.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ascii-0.9.3/src/ascii_str.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ascii-0.9.3/src/ascii_string.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ascii-0.9.3/src/free_functions.rs
+
+/Users/vincentlopez/projects/theshelf/shelf_ui/backend/sudograph/release/deps/libascii-9b260bedf309f220.rlib: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ascii-0.9.3/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ascii-0.9.3/src/ascii_char.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ascii-0.9.3/src/ascii_str.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ascii-0.9.3/src/ascii_string.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ascii-0.9.3/src/free_functions.rs
+
+/Users/vincentlopez/projects/theshelf/shelf_ui/backend/sudograph/release/deps/ascii-9b260bedf309f220.d: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ascii-0.9.3/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ascii-0.9.3/src/ascii_char.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ascii-0.9.3/src/ascii_str.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ascii-0.9.3/src/ascii_string.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ascii-0.9.3/src/free_functions.rs
+
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ascii-0.9.3/src/lib.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ascii-0.9.3/src/ascii_char.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ascii-0.9.3/src/ascii_str.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ascii-0.9.3/src/ascii_string.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ascii-0.9.3/src/free_functions.rs:

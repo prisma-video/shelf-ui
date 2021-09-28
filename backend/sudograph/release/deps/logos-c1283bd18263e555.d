@@ -1,0 +1,10 @@
+/Users/vincentlopez/projects/theshelf/shelf_ui/backend/sudograph/release/deps/logos-c1283bd18263e555.rmeta: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/logos-0.12.0/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/logos-0.12.0/src/lexer.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/logos-0.12.0/src/source.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/logos-0.12.0/src/internal.rs
+
+/Users/vincentlopez/projects/theshelf/shelf_ui/backend/sudograph/release/deps/liblogos-c1283bd18263e555.rlib: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/logos-0.12.0/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/logos-0.12.0/src/lexer.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/logos-0.12.0/src/source.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/logos-0.12.0/src/internal.rs
+
+/Users/vincentlopez/projects/theshelf/shelf_ui/backend/sudograph/release/deps/logos-c1283bd18263e555.d: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/logos-0.12.0/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/logos-0.12.0/src/lexer.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/logos-0.12.0/src/source.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/logos-0.12.0/src/internal.rs
+
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/logos-0.12.0/src/lib.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/logos-0.12.0/src/lexer.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/logos-0.12.0/src/source.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/logos-0.12.0/src/internal.rs:

@@ -172,6 +172,7 @@ module.exports = [{
       NFT_CANISTER_ID: canisters["nft"],
       SWAP_CONTRACTS_CANISTER_ID: canisters["swap_contracts"],
       VIDEO_CANISTER_ID: canisters["video"],
+      METADATA_DB_CANISTER_ID: canisters["metadata_db"],
       SHELF_UI_CANISTER_ID: canisters["shelf_ui"]
     }),
     new webpack.ProvidePlugin({

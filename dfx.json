@@ -16,10 +16,17 @@
       "main": "backend/dfinity/video/video.mo",
       "type": "motoko"
     },
+    "metadata_db": {
+        "type": "custom",
+        "build": "cargo build --target wasm32-unknown-unknown --package graphql --release --target-dir backend/sudograph/",
+        "candid": "backend/dfinity/metadata_db/src/graphql.did",
+        "wasm": "backend/sudograph/wasm32-unknown-unknown/release/graphql.wasm"
+    },
     "shelf_ui": {
       "dependencies": [
         "user",
         "nft",
+        "metadata_db",
         "swap_contracts",
         "video"
       ],

@@ -7,8 +7,8 @@ const MovieThumbnails = ({movies}) => (
         <div className="row row--grid">
             {
                 movies && movies.map(movie => 
-                    <div className="col-6 col-sm-4 col-md-3 col-xl-2" key={movie.id}>
-                        <MovieCard props={movie} key={movie.id}/>
+                    <div className="col-6 col-sm-4 col-md-3 col-xl-2" key={movie.legacy_id}>
+                        <MovieCard props={movie} key={movie.legacy_id}/>
                     </div>
                 )
             }

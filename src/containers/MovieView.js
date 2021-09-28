@@ -67,7 +67,7 @@ const MovieView = () => {
 							<div className="col-12 col-sm-5 col-md-4 col-lg-3 col-xl-5">
 								<div className="card__cover">
 									<img src={`/DB/${movie_data.title.replace(':', '-')}.jpeg`} alt="" />
-									<span className={`card__rate card__rate--${cardColor(movie_data.vote_average)}`}>{movie_data.vote_average}</span>
+									<span className={`card__rate card__rate--${cardColor(movie_data.vote_average)}`}>{Number((movie_data.vote_average).toFixed(1))}</span>
 								</div>
 								<a href="http://www.youtube.com/watch?v=0O2aH4XLbto" className="card__trailer"><i className="icon ion-ios-play-circle"></i> Watch trailer</a>
 							</div>
@@ -75,9 +75,9 @@ const MovieView = () => {
 							<div className="col-12 col-md-8 col-lg-9 col-xl-7">
 								<div className="card__content">
 									<ul className="card__meta">
-										<li><span>Director:</span>{movie_data.directors.map(x => <a href="#?html" key={x}>{x}</a>)}</li>
-										<li><span>Cast:</span>{movie_data.cast.map(x => <a href="#?html" key={x}>{x}</a>)}</li>
-										<li><span>Genre:</span>{movie_data.tags.map(x => <a href="#?html" key={x}>{x}</a>)}</li>
+										<li><span>Director:</span>{movie_data.directors.map(x => <a href="#?html" key={x.name}>{x.name}</a>)}</li>
+										<li><span>Cast:</span>{movie_data.cast.map(x => <a href="#?html" key={x.name}>{x.name}</a>)}</li>
+										<li><span>Genre:</span>{movie_data.tags.map(x => <a href="#?html" key={x.name}>{x.name}</a>)}</li>
 										<li><span>Release year:</span> {movie_data.release_date.substring(0, 4)}</li>
 										<li><span>Running time:</span> {movie_data.duration}</li>
 										<li><span>Country:</span> <a href="#?html">USA</a></li>
