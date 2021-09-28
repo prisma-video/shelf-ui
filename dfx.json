@@ -19,8 +19,8 @@
     "metadata_db": {
         "type": "custom",
         "build": "cargo build --target wasm32-unknown-unknown --package graphql --release --target-dir backend/sudograph/",
-        "candid": "canisters/dfinity/metadata_db/src/graphql.did",
-        "wasm": "target/wasm32-unknown-unknown/release/graphql.wasm"
+        "candid": "backend/dfinity/metadata_db/src/graphql.did",
+        "wasm": "backend/sudograph/wasm32-unknown-unknown/release/graphql.wasm"
     },
     "shelf_ui": {
       "dependencies": [

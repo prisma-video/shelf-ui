@@ -1,37 +1,25 @@
 type Movie {
   id: ID!
-  title: String!
+  legacy_id: Int!
+  original_language: String!
   original_title: String
-  description: String
-  trailer_url: String
-  thumbnail_img: String
-  pg_rating: String
-  tags: [Tag!] @relation(name: "Movie:tags::Tag:movie")
-
-  production_date: String
+  overview: String
+  popularity: Float
   release_date: String
-
-  revenue: Int
-  box_office: Int
-
-  imbd_url: String
-  imbd_score: Int
-  rotten_tomatoes_url: String
-  rotten_tomatoes_score: Int
-
+  title: String
+  tags: [Tag!] @relation(name: "Movie:tags::Tag:movie")
+  vote_average: Float
+  vote_count: Int
   directors: [People!] @relation(name: "Movie:directors::People:moviesDirector")
-  writers: [People] @relation(name: "Movie:writers::People:moviesWriter")
-  producers: [People] @relation(name: "Movie:producers::People:moviesProducer")
-  actors: [People] @relation(name: "Movie:actors::People:moviesActor")
-
+  cast: [People] @relation(name: "Movie:actors::People:moviesCast")
   comments: [Comment] @relation(name: "Movie:comments::Comment:movie")
 }
 
 type Tag {
   id: ID!
-  movie: Movie! @relation(name: "Movie:tags::Tag:movie")
+  name: String!
+  movie: [Movie!] @relation(name: "Movie:tags::Tag:movie")
 }
-
 
 type Comment {
   id: ID!
@@ -43,7 +31,5 @@ type People {
   id: ID!
   name: String!
   moviesDirector: [Movie!] @relation(name: "Movie:directors::People:moviesDirector")
-  moviesWriter: [Movie!] @relation(name: "Movie:writers::People:moviesWriter")
-  moviesProducer: [Movie!] @relation(name: "Movie:producers::People:moviesProducer")
-  moviesActor: [Movie!] @relation(name: "Movie:actors::People:moviesActor")
+  moviesCast: [Movie!] @relation(name: "Movie:producers::People:moviesCast")
 }
