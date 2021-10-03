@@ -8,6 +8,8 @@ import {
   HttpAgent
 } from '@dfinity/agent';
 
+import {canisterId} from "../declarations/metadata_db/index";
+
 const idlFactory = ({ IDL }) => {
   return IDL.Service({
       graphql_query: IDL.Func([IDL.Text, IDL.Text], [IDL.Text], ['query']),
@@ -20,7 +22,9 @@ const agent = new HttpAgent();
 const actor = Actor.createActor(idlFactory, {
   agent,
   // canisterId: 'rdmx6-jaaaa-aaaaa-aaadq-cai' ? 'sdhmb-viaaa-aaaai-aar5a-cai'
-  canisterId: 'sdhmb-viaaa-aaaai-aar5a-cai'
+  // canisterId: process.env.NODE_ENV == 'development' ? 'sdhmb-viaaa-aaaai-aar5a-cai' : 'sdhmb-viaaa-aaaai-aar5a-cai'
+  // canisterId: 'sdhmb-viaaa-aaaai-aar5a-cai'
+  canisterId: canisterId
 });
 
 
