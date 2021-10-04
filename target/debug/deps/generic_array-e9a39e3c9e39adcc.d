@@ -1,0 +1,11 @@
+/Users/vincentlopez/projects/theshelf/shelf_ui/target/debug/deps/generic_array-e9a39e3c9e39adcc.rmeta: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.4/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.4/src/hex.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.4/src/impls.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.4/src/arr.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.4/src/functional.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.4/src/iter.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.4/src/sequence.rs
+
+/Users/vincentlopez/projects/theshelf/shelf_ui/target/debug/deps/generic_array-e9a39e3c9e39adcc.d: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.4/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.4/src/hex.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.4/src/impls.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.4/src/arr.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.4/src/functional.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.4/src/iter.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.4/src/sequence.rs
+
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.4/src/lib.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.4/src/hex.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.4/src/impls.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.4/src/arr.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.4/src/functional.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.4/src/iter.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.4/src/sequence.rs:

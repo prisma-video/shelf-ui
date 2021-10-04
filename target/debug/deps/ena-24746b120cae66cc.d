@@ -1,0 +1,11 @@
+/Users/vincentlopez/projects/theshelf/shelf_ui/target/debug/deps/ena-24746b120cae66cc.rmeta: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ena-0.14.0/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ena-0.14.0/src/snapshot_vec.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ena-0.14.0/src/undo_log.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ena-0.14.0/src/unify/mod.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ena-0.14.0/src/unify/backing_vec.rs
+
+/Users/vincentlopez/projects/theshelf/shelf_ui/target/debug/deps/libena-24746b120cae66cc.rlib: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ena-0.14.0/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ena-0.14.0/src/snapshot_vec.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ena-0.14.0/src/undo_log.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ena-0.14.0/src/unify/mod.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ena-0.14.0/src/unify/backing_vec.rs
+
+/Users/vincentlopez/projects/theshelf/shelf_ui/target/debug/deps/ena-24746b120cae66cc.d: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ena-0.14.0/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ena-0.14.0/src/snapshot_vec.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ena-0.14.0/src/undo_log.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ena-0.14.0/src/unify/mod.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ena-0.14.0/src/unify/backing_vec.rs
+
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ena-0.14.0/src/lib.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ena-0.14.0/src/snapshot_vec.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ena-0.14.0/src/undo_log.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ena-0.14.0/src/unify/mod.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ena-0.14.0/src/unify/backing_vec.rs:

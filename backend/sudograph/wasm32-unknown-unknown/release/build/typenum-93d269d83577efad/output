@@ -1,0 +1,2 @@
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=/Users/vincentlopez/projects/theshelf/shelf_ui/backend/sudograph/wasm32-unknown-unknown/release/build/typenum-93d269d83577efad/out/consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=/Users/vincentlopez/projects/theshelf/shelf_ui/backend/sudograph/wasm32-unknown-unknown/release/build/typenum-93d269d83577efad/out/op.rs

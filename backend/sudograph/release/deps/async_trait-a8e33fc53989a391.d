@@ -1,0 +1,10 @@
+/Users/vincentlopez/projects/theshelf/shelf_ui/backend/sudograph/release/deps/libasync_trait-a8e33fc53989a391.dylib: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/args.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/expand.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/lifetime.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/parse.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/receiver.rs
+
+/Users/vincentlopez/projects/theshelf/shelf_ui/backend/sudograph/release/deps/async_trait-a8e33fc53989a391.d: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/args.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/expand.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/lifetime.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/parse.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/receiver.rs
+
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/lib.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/args.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/expand.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/lifetime.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/parse.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/receiver.rs:

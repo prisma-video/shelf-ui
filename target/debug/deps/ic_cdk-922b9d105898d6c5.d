@@ -1,0 +1,12 @@
+/Users/vincentlopez/projects/theshelf/shelf_ui/target/debug/deps/ic_cdk-922b9d105898d6c5.rmeta: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/api.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/api/call.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/api/stable.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/api/ic0.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/futures.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/printer.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/storage.rs
+
+/Users/vincentlopez/projects/theshelf/shelf_ui/target/debug/deps/ic_cdk-922b9d105898d6c5.d: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/api.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/api/call.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/api/stable.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/api/ic0.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/futures.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/printer.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/storage.rs
+
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/lib.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/api.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/api/call.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/api/stable.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/api/ic0.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/futures.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/printer.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/ic-cdk-0.2.4/src/storage.rs:

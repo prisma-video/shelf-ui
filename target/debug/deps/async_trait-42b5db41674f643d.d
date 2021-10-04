@@ -1,0 +1,10 @@
+/Users/vincentlopez/projects/theshelf/shelf_ui/target/debug/deps/libasync_trait-42b5db41674f643d.dylib: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/args.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/expand.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/lifetime.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/parse.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/receiver.rs
+
+/Users/vincentlopez/projects/theshelf/shelf_ui/target/debug/deps/async_trait-42b5db41674f643d.d: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/args.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/expand.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/lifetime.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/parse.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/receiver.rs
+
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/lib.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/args.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/expand.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/lifetime.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/parse.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/async-trait-0.1.51/src/receiver.rs:

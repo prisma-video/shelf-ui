@@ -1,0 +1,11 @@
+/Users/vincentlopez/projects/theshelf/shelf_ui/backend/sudograph/wasm32-unknown-unknown/release/deps/sudodb-13cdc90efb6b9650.rmeta: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/sudodb-0.3.0/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/sudodb-0.3.0/src/create.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/sudodb-0.3.0/src/read.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/sudodb-0.3.0/src/update.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/sudodb-0.3.0/src/delete.rs
+
+/Users/vincentlopez/projects/theshelf/shelf_ui/backend/sudograph/wasm32-unknown-unknown/release/deps/libsudodb-13cdc90efb6b9650.rlib: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/sudodb-0.3.0/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/sudodb-0.3.0/src/create.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/sudodb-0.3.0/src/read.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/sudodb-0.3.0/src/update.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/sudodb-0.3.0/src/delete.rs
+
+/Users/vincentlopez/projects/theshelf/shelf_ui/backend/sudograph/wasm32-unknown-unknown/release/deps/sudodb-13cdc90efb6b9650.d: /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/sudodb-0.3.0/src/lib.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/sudodb-0.3.0/src/create.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/sudodb-0.3.0/src/read.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/sudodb-0.3.0/src/update.rs /Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/sudodb-0.3.0/src/delete.rs
+
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/sudodb-0.3.0/src/lib.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/sudodb-0.3.0/src/create.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/sudodb-0.3.0/src/read.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/sudodb-0.3.0/src/update.rs:
+/Users/vincentlopez/.cargo/registry/src/github.com-1ecc6299db9ec823/sudodb-0.3.0/src/delete.rs:

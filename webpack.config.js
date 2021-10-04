@@ -32,6 +32,34 @@ function initCanisterIds() {
 }
 initCanisterIds();
 
+
+
+// List of all aliases for canisters. This creates the module alias for
+// the `import ... from "ic:canisters/xyz"` where xyz is the name of a
+// canister.
+const aliases = Object.entries(canisters).reduce(
+  (acc, [name, ]) => {
+    // Get the network name, or `local` by default.
+    const networkName = process.env["DFX_NETWORK"] || "local";
+    const outputRoot = path.join(
+      __dirname,
+      ".dfx",
+      networkName,
+      "canisters",
+      name
+    );
+    console.log(outputRoot);
+
+    return {
+      ...acc,
+      ["ic:canisters/" + name]: path.join(outputRoot, name + ".js"),
+      ["ic:idl/" + name]: path.join(outputRoot, name + ".did.js"),
+    };
+  },
+  {}
+);
+
+
 // const dfxJson = require("./dfx.json");
 // // List of all aliases for canisters. This creates the module alias for
 // // the `import ... from "ic:canisters/xyz"` where xyz is the name of a
@@ -110,6 +138,10 @@ module.exports = [{
   //     util: require.resolve("util/"),
   //   },
   // },
+  resolve: {
+    alias: aliases,
+    extensions: ['.tsx', '.ts', '.js']
+  },
   output: {
     filename: "bundle.js",
     path: path.join(__dirname, "dist"),
@@ -171,9 +203,11 @@ module.exports = [{
       USER_CANISTER_ID: canisters["user"],
       NFT_CANISTER_ID: canisters["nft"],
       SWAP_CONTRACTS_CANISTER_ID: canisters["swap_contracts"],
-      VIDEO_CANISTER_ID: canisters["video"],
+      // VIDEO_CANISTER_ID: canisters["video"],
       METADATA_DB_CANISTER_ID: canisters["metadata_db"],
-      SHELF_UI_CANISTER_ID: canisters["shelf_ui"]
+      SHELF_UI_CANISTER_ID: canisters["shelf_ui"],
+      BIGMAP_CANISTER_ID: canisters["bigmap"],
+      BIGMAP_DATA_CANISTER_ID: canisters["bigmap_data"]
     }),
     new webpack.ProvidePlugin({
       Buffer: [require.resolve("buffer/"), "Buffer"],

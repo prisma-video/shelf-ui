@@ -1,0 +1,2 @@
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=/Users/vincentlopez/projects/theshelf/shelf_ui/target/debug/build/typenum-a318ff8e23d9b96b/out/consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=/Users/vincentlopez/projects/theshelf/shelf_ui/target/debug/build/typenum-a318ff8e23d9b96b/out/op.rs

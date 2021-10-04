@@ -1,0 +1,4 @@
+
+[submodule "vendor/bigmap-rs"]
+	path = vendor/bigmap-rs
+	url = git@github.com:dfinity/bigmap-poc

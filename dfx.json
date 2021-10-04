@@ -12,8 +12,17 @@
       "main": "backend/dfinity/swap_contracts/swap_contracts.mo",
       "type": "motoko"
     },
-    "video": {
-      "type": "assets"
+    "bigmap": {
+      "type": "custom",
+      "candid": "vendor/bigmap-rs/src/bigmap_index.did",
+      "wasm": "vendor/bigmap-rs/target/wasm32-unknown-unknown/release/bigmap_index.wasm",
+      "build": "./vendor/bigmap-rs/build"
+    },
+    "bigmap_data": {
+      "type": "custom",
+      "candid": "vendor/bigmap-rs/src/bigmap_data.did",
+      "wasm": "vendor/bigmap-rs/target/wasm32-unknown-unknown/release/bigmap_data.wasm",
+      "build": "./vendor/bigmap-rs/build"
     },
     "metadata_db": {
         "type": "custom",
@@ -28,7 +37,8 @@
         "nft",
         "metadata_db",
         "swap_contracts",
-        "video"
+        "bigmap",
+        "bigmap_data"
       ],
       "frontend": {
         "entrypoint": "dist/index.html"
@@ -43,6 +53,11 @@
     "build": {
       "output": "src/backend/dfinity/",
       "packtool": ""
+    },
+    "start": {
+      "address": "127.0.0.1",
+      "port": 8000,
+      "serve_root": "canisters/eeoo/assets"
     }
   },
   "dfx": "0.8.1",
