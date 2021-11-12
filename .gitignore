@@ -13,3 +13,7 @@
 # frontend code
 node_modules/
 dist/
+
+# cargo build
+src/sudograph/
+target/

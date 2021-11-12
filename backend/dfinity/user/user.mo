@@ -20,13 +20,18 @@ actor user {
     private stable var _rolesState : [(Principal, Role)] = [];
     private var _roles : HashMap.HashMap<Principal, Role> = HashMap.fromIter(_rolesState.vals(), 0, Principal.equal, Principal.hash);
 
+    private stable var _subscriptionsState : [(Principal, Role)] = [];
+    private var _subscriptions : HashMap.HashMap<Principal, Role> = HashMap.fromIter(_subscriptionsState.vals(), 0, Principal.equal, Principal.hash);
+
     //State functions
     system func preupgrade() {
         _userDatabaseState := Iter.toArray(_userDatabase.entries());
+        _subscriptionsState := Iter.toArray(_subscriptions.entries());
         _rolesState := Iter.toArray(_roles.entries());
     };
     system func postupgrade() {
         _userDatabaseState := [];
+        _subscriptionsState := [];
         _rolesState := [];
     };
 
@@ -74,6 +79,16 @@ actor user {
 
     // Assign a new role to a principal
     public shared({ caller }) func assign_role(assignee: Principal, new_role: Role ) : async () {
+        await require_permission(caller, #assign_role );
+
+        if (new_role == #admin) {
+            throw Error.reject( "Cannot assign anyone to be the admin" );
+        };
+        _roles.put(assignee, new_role);
+    };
+
+    // Subcription methods
+    public shared({ caller }) func updateSubscriptionPlan(user: Principal, new_role: Role ) : async () {
         await require_permission(caller, #assign_role );
 
         if (new_role == #admin) {

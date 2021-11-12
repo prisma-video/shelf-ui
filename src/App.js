@@ -7,6 +7,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
 import ProfileView from './containers/ProfileView';
+import AdminView from './containers/AdminView';
 import SignInView from './containers/SignInView';
 import CatalogView from './containers/CatalogView';
 import MovieView from './containers/MovieView';
@@ -30,6 +31,7 @@ function App() {
       <Switch>
         <Route path ="/movie/:id" component={MovieView} />
         <Route path ="/singin" component={SignInView} />
+        <Route path ="/admin" component={AdminView} />
         <Route path ="/profile" component={ProfileView} />
         <Route path ="/pricing" component={() => <CatalogView mode={"pricing"} />} />
         <Route path ="/myshelf" component={() => <CatalogView mode={"myshelf"} />} />
