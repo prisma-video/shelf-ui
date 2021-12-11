@@ -1,6 +1,6 @@
 {
   "api": {
-    "metadatadb": {
+    "shelfui": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
@@ -8,15 +8,12 @@
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 365,
-              "description": "metadatadb_key"
+              "apiKeyExpirationDays": 7
             }
           },
           "additionalAuthenticationProviders": []
         }
       }
     }
-  },
-  "storage": {},
-  "function": {}
+  }
 }
