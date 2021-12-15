@@ -3,17 +3,14 @@
   "version": "0.1.0",
   "description": "Internet Computer starter application",
   "keywords": [
-    "Internet Computer",
-    "Motoko",
-    "JavaScript",
-    "Canister"
+    "JavaScript"
   ],
   "scripts": {
     "build": "webpack",
     "prebuild": "npm run copy:types",
-    "start": "webpack serve --mode development --env development",
-    "prestart": "npm run copy:types",
-    "copy:types": "rsync -avr .dfx/$(echo ${DFX_NETWORK:-'**'})/canisters/** --exclude='assets/' --exclude='idl/' --exclude='*.wasm' --delete src/declarations"
+    "start": "webpack serve --mode development --env DFX_NETWORK=ic --env development",
+    "prestart2": "npm run copy:types",
+    "copy:types": "rsync -avr .dfx/ic/canisters/** --exclude='assets/' --exclude='idl/' --exclude='*.wasm' --delete src/declarations"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.15.0",
